@@ -38,20 +38,8 @@ plants_data: list[tuple[str, int, int]] = [
 ]
 
 
-def count_plants(plants) -> int:
-    """
-    Counts the number of items in a list of plant data.
-
-    Args:
-        plants (list): A list containing plant data (tuples or objects).
-
-    Returns:
-        int: The total count of plants in the list.
-    """
-    return len(plants)
-
-
 if __name__ == "__main__":
+    count: int = 0
     plants: list[Plant] = [
         Plant(name, height, age)
         for (name, height, age) in plants_data
@@ -60,4 +48,5 @@ if __name__ == "__main__":
     print("=== Plant Factory Output ===")
     for plant in plants:
         print(plant)
-    print(f"\nTotal plants created: {count_plants(plants_data)}")
+        count += 1
+    print(f"\nTotal plants created: {count}")
