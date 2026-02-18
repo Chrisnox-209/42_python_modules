@@ -11,42 +11,53 @@ class Plant:
 
 class Flower(Plant):
     def __init__(self, name: str, height: int, age: int, color: str) -> None:
+        
         super().__init__(name, height, age)
         self.color: str = color
 
-    def bloom(self) -> None:
+    def bloom(self) -> str:
         if self.age > 20:
             print(f"{self.name} is blooming beautifully!")
         else:
             print(f"{self.name} is not blooming!")
 
-    def get_info(self) -> None:
+    def get_info(self) -> str:
         return super().get_info() + f", {self.color} color"
 
 
 class Tree(Plant):
     def __init__(self, name: str, height: int, age: int,
                  trunk_diameter: int) -> None:
+        
         super().__init__(name, height, age)
         self.trunk_diameter: int = trunk_diameter
 
     def produce_shade(self) -> None:
         shade: int = self.trunk_diameter * 0.25
         print(f"{self.name} provides {shade} square meters of shade")
+    
+    def get_info(self) -> str:
+        return super().get_info() + f", {self.trunk_diameter}cm diameter"
 
 
 class Vegetable(Plant):
     def __init__(self, name: str, height: int, age: int,
-                 harvest_season: str, nutritional_value: float) -> None:
+                 harvest_season: str, nutritional_value: str) -> None:
+        
         super().__init__(name, height, age)
         self.harvest_season: str = harvest_season
-        self.nutritional_value: float = nutritional_value
+        self.nutritional_value: str = nutritional_value
 
+    def get_info(self) -> str:
+        info: str =  super().get_info() + f", {self.harvest_season} harvest\n"
+        info += f"{self.name} is a rich in {self.nutritional_value}"
+        return info
+    
 
 plants_data: list[tuple[str, int, int]] = [
     (Flower, "Rose", 25, 30, "red"),
-    (Tree, "Oak", 667, 2563, 62),
-    (Vegetable, "Tomato", 60, 90, "spring", "vitami C"),
+    (Tree, "Oak", 500, 1825, 50),
+    (Vegetable, "Tomato", 80, 90, "summer", "vitamin C"),
 ]
 
 
