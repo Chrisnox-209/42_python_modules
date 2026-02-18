@@ -1,6 +1,6 @@
-def ft_plant_age():
+def ft_plant_age() -> str:
     age = input("Enter plant age in days: ")
-    if int(age) > 60:
+    if int(age) < 60:
         print("Plant needs more time to grow")
     else:
         print("Plant is ready to harvest!")
