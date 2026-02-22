@@ -32,50 +32,228 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 ---
 
 ## 📁 Structure du dépôt
+#### 42_python_modules/
+<details>
+<summary><font size="2" color="#0052a4"><b>Python_00/</b></font></summary>
 
-    42_python_modules/
-    ├── Python_00/
-    │   ├── ex0/
-    │   │   └── ft_hello_garden.py
-    │   ├── ex1/
-    │   │   └── ft_plot_area.py
-    │   ├── ex2/
-    │   │   └── ft_harvest_total.py
-    │   ├── ex3/
-    │   │   └── ft_plant_age.py
-    │   ├── ex4/
-    │   │   └── ft_water_reminder.py
-    │   ├── ex5/
-    │   │   ├── ft_count_harvest_iterative.py
-    │   │   └── ft_count_harvest_recursive.py
-    │   ├── ex6/
-    │   │   └── ft_garden_summary.py
-    │   └── ex7/
-    │       └── ft_seed_inventory.py
-    │
-    ├── Python_01/
-    │   ├── ex0/
-    │   │   └── ft_seed_inventory.py
-    │   ├── ex1/
-    │   │   └── ft_garden_data.py
-    │   ├── ex2/
-    │   │   └── ft_plant_growth.py
-    │   ├── ex3/
-    │   │   └── ft_plant_factory.py
-    │   ├── ex4/
-    │   │   └── ft_garden_security.py
-    │   ├── ex5/
-    │   |   └── ft_plant_types.py
-    │   └── ex6/
-    │       └── ft_garden_analytics.py
-    │
-    ├── Python_02/
-    │   ├── ex0/
-    │   │   └── ft_first_exception.py
-    │   ├── ex1/
-    │   │   └── ft_different_errors.py
-    |
-    └── README.md
+  ```
+├── ex0/
+│   └── ft_hello_garden.py
+├── ex1/
+│   └── ft_plot_area.py
+├── ex2/
+│   └── ft_harvest_total.py
+├── ex3/
+│   └── ft_plant_age.py
+├── ex4/
+│   └── ft_water_reminder.py
+├── ex5/
+│   ├── ft_count_harvest_iterative.py
+│   └── ft_count_harvest_recursive.py
+├── ex6/
+│   └── ft_garden_summary.py
+└── ex7/
+      └── ft_seed_inventory.py
+  ```
+</details>
+
+<details>
+<summary><font size="2" color="#0052a4"><b>Python_01/</b></font></summary>
+
+  ```
+├── ex0/
+│   └── ft_seed_inventory.py
+├── ex1/
+│   └── ft_garden_data.py
+├── ex2/
+│   └── ft_plant_growth.py
+├── ex3/
+│   └── ft_plant_factory.py
+├── ex4/
+│   └── ft_garden_security.py
+├── ex5/
+│   └── ft_plant_types.py
+└── ex6/
+      └── ft_garden_analytics.py
+  ```
+  </details>
+
+<details>
+<summary><font size="2" color="#0052a4"><b>Python_02/</b></font></summary>
+
+  ```
+├── ex0/
+│   └── ft_first_exception.py
+├── ex1/
+│   └── ft_different_errors.py
+├── ex2/
+│   └── ft_custom_errors.py
+├── ex3/
+│   └── ft_finally_block.py
+├── ex4/
+│   └── ft_raise_errors.py
+└── ex5/
+      └── ft_garden_management.py
+  ```
+  </details>
+
+<details>
+<summary><font size="2" color="#0052a4"><b>Python_03/</b></font></summary>
+
+  ```
+├── ex0/
+│   └──
+├── ex1/
+│   └──
+├── ex2/
+│   └──
+├── ex3/
+│   └──
+├── ex4/
+│   └──
+└── ex5/
+      └──
+  ```
+  </details>
+
+<details>
+<summary><font size="2" color="#0052a4"><b>Python_04/</b></font></summary>
+
+  ```
+├── ex0/
+│   └──
+├── ex1/
+│   └──
+├── ex2/
+│   └──
+├── ex3/
+│   └──
+├── ex4/
+│   └──
+└── ex5/
+      └──
+  ```
+  </details>
+
+<details>
+<summary><font size="2" color="#0052a4"><b>Python_05/</b></font></summary>
+
+  ```
+├── ex0/
+│   └──
+├── ex1/
+│   └──
+├── ex2/
+│   └──
+├── ex3/
+│   └──
+├── ex4/
+│   └──
+└── ex5/
+      └──
+  ```
+  </details>
+
+<details>
+<summary><font size="2" color="#0052a4"><b>Python_06/</b></font></summary>
+
+  ```
+├── ex0/
+│   └──
+├── ex1/
+│   └──
+├── ex2/
+│   └──
+├── ex3/
+│   └──
+├── ex4/
+│   └──
+└── ex5/
+      └──
+  ```
+  </details>
+
+<details>
+<summary><font size="2" color="#0052a4"><b>Python_07/</b></font></summary>
+
+  ```
+├── ex0/
+│   └──
+├── ex1/
+│   └──
+├── ex2/
+│   └──
+├── ex3/
+│   └──
+├── ex4/
+│   └──
+└── ex5/
+      └──
+  ```
+  </details>
+
+<details>
+<summary><font size="2" color="#0052a4"><b>Python_08/</b></font></summary>
+
+  ```
+├── ex0/
+│   └──
+├── ex1/
+│   └──
+├── ex2/
+│   └──
+├── ex3/
+│   └──
+├── ex4/
+│   └──
+└── ex5/
+      └──
+  ```
+  </details>
+
+<details>
+<summary><font size="2" color="#0052a4"><b>Python_09/</b></font></summary>
+
+  ```
+├── ex0/
+│   └──
+├── ex1/
+│   └──
+├── ex2/
+│   └──
+├── ex3/
+│   └──
+├── ex4/
+│   └──
+└── ex5/
+      └──
+  ```
+  </details>
+
+<details>
+<summary><font size="2" color="#0052a4"><b>Python_10/</b></font></summary>
+
+  ```
+├── ex0/
+│   └──
+├── ex1/
+│   └──
+├── ex2/
+│   └──
+├── ex3/
+│   └──
+├── ex4/
+│   └──
+└── ex5/
+      └──
+  ```
+  </details>
+
+  ```
+│
+└── README.md
+```
+
 
 ---
 
