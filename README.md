@@ -2,8 +2,8 @@
 
 ## 🎯 Objectif du projet
 
-Ce projet consiste à maîtriser le langage Python à travers 11 modules thématiques.  
-Le but : comprendre en profondeur la manipulation de données, l'ingénierie logicielle, la programmation orientée objet et les paradigmes fonctionnels.  
+Ce projet consiste à maîtriser le langage Python à travers 11 modules thématiques.
+Le but : comprendre en profondeur la manipulation de données, l'ingénierie logicielle, la programmation orientée objet et les paradigmes fonctionnels.
 Chaque module explore un univers spécifique (Smart Agriculture, Digital Matrix, Cosmic Data) pour appliquer des concepts techniques à des cas concrets.
 
 ---
@@ -62,8 +62,19 @@ Le cursus est structuré autour de la montée en puissance des compétences :
     │   │   └── ft_plant_growth.py
     │   ├── ex3/
     │   │   └── ft_plant_factory.py
-    │   └── ex4/
-    │       └── ft_garden_security.py
+    │   ├── ex4/
+    │   │   └── ft_garden_security.py
+    │   ├── ex5/
+    │   |   └── ft_plant_types.py
+    │   └── ex6/
+    │       └── ft_garden_analytics.py
+    │
+    ├── Python_02/
+    │   ├── ex0/
+    │   │   └── ft_first_exception.py
+    │   ├── ex1/
+    │   │   └── ft_different_errors.py
+    |
     └── README.md
 
 ---
