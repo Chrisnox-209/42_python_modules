@@ -1,4 +1,4 @@
-def garden_operations():
+def garden_operations() -> None:
 
     try:
         print("Testing ValueError...")
@@ -20,7 +20,11 @@ def garden_operations():
 
     try:
         print("Testing KeyError...")
-        dictionary = {"type": "plant", "name": "rose", "age": 28}
+        dictionary: dict[str, str | int] = {
+            "type": "plant",
+            "name": "rose",
+            "age": 28
+        }
         print(dictionary["_plant"])
     except KeyError:
         print("Caught KeyError: 'missing\\_plant'\n")
@@ -30,13 +34,17 @@ def garden_operations():
         int("abc")
         10 / 0
         open("missing.txt")
-        dictionary = {"type": "plant", "name": "rose", "age": 28}
+        dictionary: dict[str, str | int] = {
+            "type": "plant",
+            "name": "rose",
+            "age": 28
+        }
         print(dictionary["_plant"])
     except (ValueError, ZeroDivisionError, FileNotFoundError, KeyError):
         print("Caught an error, but program continues!\n")
 
 
-def test_error_types():
+def test_error_types() -> None:
     print("=== Garden Error Types Demo ===\n")
     garden_operations()
     print("All error types tested successfully!")
