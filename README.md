@@ -52,8 +52,9 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 │   └── ft_count_harvest_recursive.py
 ├── ex6/
 │   └── ft_garden_summary.py
-└── ex7/
-      └── ft_seed_inventory.py
+├──  ex7/
+│      └── ft_seed_inventory.py
+└── main.py
   ```
 </details>
 
