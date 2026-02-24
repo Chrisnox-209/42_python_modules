@@ -19,7 +19,7 @@ class FloweringPlant(Plant):
         self.color: str = color
 
     def get_info(self) -> str:
-        return
+        return super().get_info() + f", {self.color} color"
 
 
 class PrizeFlower(FloweringPlant):
@@ -29,21 +29,31 @@ class PrizeFlower(FloweringPlant):
         self.prize: int = prize
 
     def get_info(self) -> str:
-        return
+        return super().get_info() + f", Prize points:{self.prize}"
 
 
 class GardenManager:
-    def __init__(self) -> None:
-        self.gardens: dict = {}
+    def __init__(self, owner_name: str) -> None:
+        self.owner_name: str = owner_name
+        self.plants: list = []
 
-    def add_plant(self, garden_name: str, plant: Plant) -> None:
-        if garden_name in self.gardens:
-            self.gardens[garden_name] = self.gardens[garden_name] + [plant]
-            print(f"Added {plant.name} to {self.owner_name}'s Garden")
-        else:
-            self.gardens[garden_name] = [plant]
-            print(f"Added {plant.name} to {self.owner_name}'s Garden")
+    def add_plant(self, plant: Plant) -> None:
+        self.plants += [plant]
+        print(f"Added {plant.name_plant} to {self.owner_name}'s garden")
 
 
 if __name__ == "__main__":
-    print("=== Garden Management System Demo ===")
+    print("=== Garden Management System Demo ===\n")
+    gardener_1 = GardenManager("Alice")
+    gardener_2 = GardenManager("Bob")
+    plant_1 = Plant("Oak Tree", 100, 32)
+    plant_2 = Plant("Rose", 25, 40)
+    plant_3 = Plant("Sunflower", 50, 23)
+    gardener_1.add_plant(plant_1)
+    gardener_1.add_plant(plant_2)
+    gardener_1.add_plant(plant_3)
+    print("\nAlice is helping all plants grow...")
+    plant_1.grow()
+    plant_2.grow()
+    plant_3.grow()
+    print("\n=== Alice's Garden Report ===")
