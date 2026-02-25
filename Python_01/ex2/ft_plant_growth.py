@@ -32,7 +32,7 @@ class Plant:
         """
         self._age_day += 1
 
-    def get_info(self) -> str:
+    def get_info(self) -> None:
         """
         Prints the current state of the plant, including its name,
         height, and age.
