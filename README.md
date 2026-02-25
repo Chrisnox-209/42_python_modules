@@ -63,7 +63,7 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 
   ```
 ├── ex0/
-│   └── ft_seed_inventory.py
+│   └── ft_garden_intro.py
 ├── ex1/
 │   └── ft_garden_data.py
 ├── ex2/
