@@ -34,7 +34,7 @@ class SecurePlant:
         """
         return self.__age
 
-    def set_height(self, new_height) -> None:
+    def set_height(self, new_height: int) -> None:
         """
         Set the height of the plant.
 
@@ -50,7 +50,7 @@ class SecurePlant:
                   f"{new_height}cm [REJECTED]")
             print("Security: Negative height rejected")
 
-    def set_age(self, set_age) -> None:
+    def set_age(self, set_age: int) -> None:
         """
         Set the age of the plant.
 
@@ -66,7 +66,7 @@ class SecurePlant:
                   f"{set_age}cm [REJECTED]")
             print("Security: Negative age rejected")
 
-    def get_info(self) -> str:
+    def get_info(self) -> None:
         """
         Display current information about the plant.
 
