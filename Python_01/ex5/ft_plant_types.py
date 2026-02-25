@@ -104,7 +104,7 @@ class Tree(Plant):
 
         The shade area is estimated as 25% of the trunk diameter.
         """
-        shade: int = self.trunk_diameter * 0.25
+        shade: float = self.trunk_diameter * 0.25
         print(f"{self.name} provides {shade} square meters of shade")
 
     def get_info(self) -> str:
@@ -158,7 +158,7 @@ class Vegetable(Plant):
         return info
 
 
-plants_data: list[tuple[str, int, int]] = [
+plants_data: list[tuple[object, ...]] = [
     (Flower, "Rose", 25, 30, "red"),
     (Tree, "Oak", 500, 1825, 50),
     (Vegetable, "Tomato", 80, 90, "summer", "vitamin C"),
@@ -167,7 +167,7 @@ plants_data: list[tuple[str, int, int]] = [
 
 if __name__ == "__main__":
     print("=== Garden Plant Types ===")
-    plants: list = [plant[0](*plant[1:]) for plant in plants_data]
+    plants: list = [data[0](*data[1:]) for data in plants_data]
     for plant in plants:
         print()
         print(plant.get_info())
