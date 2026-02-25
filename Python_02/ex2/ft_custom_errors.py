@@ -19,7 +19,7 @@ class Plant:
         self.height: int = height
         self.age: int = age
 
-    def watering(self, liter: int) -> None:
+    def watering(self, liter: int) -> str:
         self.liter: int = liter
         if self.liter < 5:
             raise WaterError("Not enough water in the tank!")
