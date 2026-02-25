@@ -34,12 +34,12 @@ def garden_operations() -> None:
         int("abc")
         10 / 0
         open("missing.txt")
-        dictionary: dict[str, str | int] = {
+        dictionary_2: dict[str, str | int] = {
             "type": "plant",
             "name": "rose",
             "age": 28
         }
-        print(dictionary["_plant"])
+        print(dictionary_2["_plant"])
     except (ValueError, ZeroDivisionError, FileNotFoundError, KeyError):
         print("Caught an error, but program continues!\n")
 
