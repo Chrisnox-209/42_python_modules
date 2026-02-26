@@ -254,7 +254,8 @@ class GardenManager:
         @classmethod
         def test_height(cls, gardens) -> None:
             """
-            Verify that all plants in all gardens have a height greater than 5 cm.
+            Verify that all plants in all gardens have a
+            height greater than 5 cm.
 
             :param gardens: List of Garden instances.
             """
