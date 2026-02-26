@@ -1,70 +1,169 @@
 class Plant:
+    """
+    Represents a basic plant with a name, height, and age.
+    Tracks its initial height to measure growth over time.
+    """
     def __init__(self, name_plant: str, height: int, age: int) -> None:
+        """
+        Initialize a Plant instance.
+
+        :param name_plant: Name of the plant.
+        :param height: Current height of the plant in centimeters.
+        :param age: Age of the plant in days.
+        """
         self.name_plant: str = name_plant
         self.height: int = height
         self.age: int = age
         self.initial_height: int = height
 
     def grow(self) -> None:
+        """
+        Increase the plant's height by 1 cm and print a growth message.
+        """
         print(f"{self.name_plant} grew 1cm")
         self.height += 1
 
     def get_info(self) -> str:
+        """
+        Return a formatted string containing plant information.
+
+        :return: String with plant name, height, and age.
+        """
         return f"- {self.name_plant}: {self.height}cm, {self.age} days."
 
 
 class FloweringPlant(Plant):
+    """
+    Represents a flowering plant, extending the basic Plant class
+    by adding a flower color attribute.
+    """
     def __init__(self, name_plant: str, height: int,
                  age: int, color: str) -> None:
+        """
+        Initialize a FloweringPlant instance.
+
+        :param name_plant: Name of the plant.
+        :param height: Current height in centimeters.
+        :param age: Age in days.
+        :param color: Color of the flowers.
+        """
         super().__init__(name_plant, height, age)
         self.color: str = color
 
     def get_info(self) -> str:
+        """
+        Return formatted information including flower color.
+
+        :return: String with plant details and flower color.
+        """
         return super().get_info() + f", {self.color} color"
 
 
 class PrizeFlower(FloweringPlant):
+    """
+    Represents a special flowering plant that earns prize points.
+    Extends FloweringPlant by adding a prize score.
+    """
     def __init__(self, name_plant: str, height: int, age: int, color: str,
                  prize: int) -> None:
+        """
+        Initialize a PrizeFlower instance.
+
+        :param name_plant: Name of the plant.
+        :param height: Current height in centimeters.
+        :param age: Age in days.
+        :param color: Flower color.
+        :param prize: Prize points awarded to this plant.
+        """
         super().__init__(name_plant, height, age, color)
         self.prize: int = prize
 
     def get_info(self) -> str:
+        """
+        Return formatted information including prize points.
+
+        :return: String with plant details, flower color, and prize points.
+        """
         return super().get_info() + f", Prize points:{self.prize}"
 
 
 class Garden:
+    """
+    Represents a garden owned by a specific person.
+    A garden can contain multiple plants.
+    """
     def __init__(self, owner_name: str) -> None:
+        """
+        Initialize a Garden instance.
+
+        :param owner_name: Name of the garden owner.
+        """
         self.owner_name: str = owner_name
         self.plants: list[Plant] = []
 
     def grow_all(self) -> None:
+        """
+        Trigger growth for all plants in the garden.
+        """
         print(f"\n{self.owner_name} is helping all plants grow...")
         for plant in self.plants:
             plant.grow()
 
     def add_plant(self, plant: Plant) -> None:
+        """
+        Add a plant to the garden.
+
+        :param plant: A Plant (or subclass) instance to add.
+        """
         self.plants += [plant]
         print(f"Added {plant.name_plant} to {self.owner_name}'s garden")
 
 
 class GardenManager:
+    """
+    Manages multiple gardens and provides global statistics
+    and network-related operations.
+    """
     nb_garden: int = 0
 
     def __init__(self) -> None:
+        """
+        Initialize a GardenManager instance.
+        """
         self.gardens: list[Garden] = []
 
     def get_garden(self, owner_name: str) -> Garden:
+        """
+        Retrieve a garden by its owner's name.
+
+        :param owner_name: Name of the garden owner.
+        :return: The corresponding Garden instance.
+        """
         for garden in self.gardens:
             if owner_name == garden.owner_name:
                 return garden
 
     def add_garden(self, garden: Garden) -> None:
+        """
+        Add a garden to the manager and increment the garden counter.
+
+        :param garden: Garden instance to add.
+        """
         self.gardens += [garden]
         GardenManager.nb_garden += 1
 
     @classmethod
     def create_garden_network(cls, gardens) -> None:
+        """
+        Calculate and display a score for each garden based on plant types.
+
+        Scoring rules:
+        - PrizeFlower: 174 points
+        - FloweringPlant: 40 points
+        - Plant: 4 points
+
+        :param gardens: List of Garden instances.
+        """
         scores: list = []
         print("Garden scores - ", end="")
         for i, garden in enumerate(gardens):
@@ -85,14 +184,31 @@ class GardenManager:
 
     @classmethod
     def count_garden(cls) -> None:
+        """
+        Print the total number of gardens managed.
+        """
         print(f"Total gardens managed: {GardenManager.nb_garden}")
 
     class GardenStats:
+        """
+        Provides statistical analysis tools for a specific garden.
+        """
+
         def __init__(self, garden_analysis: "Garden") -> None:
+            """
+            Initialize GardenStats with a garden to analyze.
+
+            :param garden_analysis: Garden instance to analyze.
+            """
             self.garden_analysis: Garden = garden_analysis
 
         @staticmethod
         def total_plant_growth(plants: list[Plant]) -> None:
+            """
+            Calculate and print the average growth of plants.
+
+            :param plants: List of Plant instances.
+            """
             sum_grow: int = 0
             nb_plants: int = 0
             for plant in plants:
@@ -102,6 +218,10 @@ class GardenManager:
             print(f"Plants added: {nb_plants}, Total growth: {total:.0f}cm")
 
         def get_plant_owner(self) -> None:
+            """
+            Display detailed information about each plant
+            in the analyzed garden.
+            """
             for plant in self.garden_analysis.plants:
                 if type(plant) is FloweringPlant:
                     print(f"- {plant.name_plant}: {plant.height}cm, "
@@ -114,6 +234,10 @@ class GardenManager:
                     print(f"- {plant.name_plant}: {plant.height}cm")
 
         def count_type_plant(self) -> None:
+            """
+            Count and display the number of each plant type
+            in the analyzed garden.
+            """
             total_prizeflower: int = 0
             total_floweringplant: int = 0
             total_plant: int = 0
@@ -129,6 +253,11 @@ class GardenManager:
 
         @classmethod
         def test_height(cls, gardens) -> None:
+            """
+            Verify that all plants in all gardens have a height greater than 5 cm.
+
+            :param gardens: List of Garden instances.
+            """
             test_validation: int = 0
             nb_plant: int = 0
             for garden in gardens:
@@ -142,11 +271,22 @@ class GardenManager:
                 print("Height validation test: false")
 
 
+"""
+List of gardens managed in the system (one for Alice and one for Bob).
+"""
 list_gardens: list[Garden] = [Garden("Alice"), Garden("Bob")]
+"""
+List of plants to be added to Alice's garden, including regular,
+flowering, and prize flowers.
+"""
 plants_alice: list[Plant] = [Plant("Oak Tree", 100, 32),
                              FloweringPlant("Rose", 25, 40, "red"),
                              PrizeFlower("Sunflower", 50, 23, "yellow", 10)
                              ]
+"""
+List of plants to be added to Bob's garden, including
+regular and flowering plants.
+"""
 plants_bob: list[Plant] = [FloweringPlant("Tulip", 25, 7, "purple"),
                            FloweringPlant("Daisy", 5, 3, "White"),
                            Plant("cactus", 60, 17),
