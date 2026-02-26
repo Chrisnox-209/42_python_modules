@@ -104,12 +104,14 @@ class GardenManager:
         def get_plant_owner(self) -> None:
             for plant in self.garden_analysis.plants:
                 if type(plant) is FloweringPlant:
-                    print(f"- {plant.name_plant}: {plant.height}cm, {plant.color} flowers (blooming)")
+                    print(f"- {plant.name_plant}: {plant.height}cm, "
+                          f"{plant.color} flowers (blooming)")
                 elif type(plant) is PrizeFlower:
-                    print(f"- {plant.name_plant}: {plant.height}cm, {plant.color} flowers (blooming), Prize points: {plant.prize}")
+                    print(f"- {plant.name_plant}: {plant.height}cm, "
+                          f"{plant.color} flowers (blooming), "
+                          f"Prize points: {plant.prize}")
                 elif type(plant) is Plant:
                     print(f"- {plant.name_plant}: {plant.height}cm")
-
 
         def count_type_plant(self) -> None:
             total_prizeflower: int = 0
@@ -124,6 +126,20 @@ class GardenManager:
                     total_plant += 1
             print(f"Plant types: {total_plant} regular, {total_floweringplant}"
                   f" flowering, {total_prizeflower} prize flowers")
+
+        @classmethod
+        def test_height(cls, gardens) -> None:
+            test_validation: int = 0
+            nb_plant: int = 0
+            for garden in gardens:
+                for plant in garden.plants:
+                    if plant.height > 5:
+                        test_validation += 1
+                    nb_plant += 1
+            if nb_plant == test_validation:
+                print("Height validation test: True")
+            else:
+                print("Height validation test: false")
 
 
 list_gardens: list[Garden] = [Garden("Alice"), Garden("Bob")]
@@ -154,11 +170,14 @@ if __name__ == "__main__":
             garden.grow_all()
 
     print("\n=== Alice's Garden Report ===")
-    
+    print("Plants in garden:")
     stats_alice = GardenManager.GardenStats(instance.get_garden("Alice"))
     plants: list[Plant] = instance.get_garden("Alice").plants
+    stats_alice.get_plant_owner()
+    print()
     GardenManager.GardenStats.total_plant_growth(plants)
     stats_alice.count_type_plant()
-    stats_alice.get_plant_owner()
-    instance.count_garden()
+    print()
+    GardenManager.GardenStats.test_height(instance.gardens)
     GardenManager.create_garden_network(instance.gardens)
+    instance.count_garden()
