@@ -57,7 +57,8 @@ class GardenManager:
                 raise HealthError(f" Sun level {plant.sun} is too high "
                                   "(max 10)", plant.name)
             else:
-                print(f"healthy (water: {plant.water}, sun: {plant.sun})")
+                print(f"{plant.name}: healthy (water: {plant.water}, "
+                      f"sun: {plant.sun})")
 
     def check_tank(self) -> None:
         if self.__tank == 0:
@@ -65,7 +66,7 @@ class GardenManager:
 
 
 def test_garden_management() -> None:
-    print("test_garden_management()\n")
+    print("=== Garden Management System ===\n")
 
     my_garden = GardenManager()
     list_plants: list[str] = [Plant("tomato", 30, 1, 1, 6),
@@ -104,9 +105,8 @@ def test_garden_management() -> None:
     finally:
         print("System recovered and continuing...")
 
-    # for plant in my_garden.plants:
-    #     print(plant.get_info())
-
+    print()
+    print("Garden management system test complete!")
 
 
 if __name__ == "__main__":
