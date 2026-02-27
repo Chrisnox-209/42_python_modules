@@ -23,7 +23,7 @@ class Plant:
         self.sun: int = sun
 
     def get_info(self) -> str:
-        return (f"name: {self.name} | height: {self.height} | " 
+        return (f"name: {self.name} | height: {self.height} | "
                 f"age: {self.age} | water: {self.water} | sun: {self.sun}")
 
 
@@ -67,12 +67,12 @@ class GardenManager:
 
 def test_garden_management() -> None:
     print("=== Garden Management System ===\n")
-
     my_garden = GardenManager()
-    list_plants: list[str] = [Plant("tomato", 30, 1, 1, 6),
-                              Plant("lettuce", 12, 5, 8, 10),
-                              Plant("", 0, 0, 0, 0)
-                              ]
+    list_plants: list[Plant] = [
+            Plant("tomato", 30, 1, 1, 6),
+            Plant("lettuce", 12, 5, 8, 10),
+            Plant("", 0, 0, 0, 0)
+    ]
     print("Adding plants to garden...")
     try:
         for plant in list_plants:
