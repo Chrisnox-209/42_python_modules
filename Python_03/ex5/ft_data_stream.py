@@ -1,4 +1,4 @@
-from typing import Generator, Tuple
+from typing import Generator, Tuple, Any
 import sys
 import random
 import time
@@ -17,7 +17,7 @@ def numbers_prime(nb: int) -> bool:
     return True
 
 
-def get_number_prime(nb: int):
+def get_number_prime(nb: int) -> Generator[int, Any, None]:
     i: int = 1
     prime: int = 2
     while i <= nb:
@@ -32,19 +32,24 @@ def game_stream(nb_game: int) -> Generator[
     None,
     None
 ]:
-    name_player = ["alice", "bob", "charlie"]
-    action = ["killed monster", "found treasure", "leveled up"]
+    name_player: list[str] = ["alice", "bob", "charlie"]
+    action: list[str] = ["killed monster", "found treasure", "leveled up"]
     print(f"Processing {nb_game} game events...\n")
     for i in range(1, nb_game + 1):
-        lvl = random.randint(1, 21)
-        nb_player = random.randint(0, 2)
-        nb_action = random.randint(0, 2)
-        string_event = (f"Event {i}: Player {name_player[nb_player]} "
-                        f"(level {lvl}) {action[nb_action]}")
+        lvl: int = random.randint(1, 21)
+        nb_player: int = random.randint(0, 2)
+        nb_action: int = random.randint(0, 2)
+        string_event: str = (f"Event {i}: Player {name_player[nb_player]} "
+                             f"(level {lvl}) {action[nb_action]}")
         yield string_event, lvl, action[nb_action], name_player[nb_player]
 
 
-def stream_data(list_level: list, dict_event: dict, level: int, event: str):
+def stream_data(
+    list_level: list,
+    dict_event: dict,
+    level: int,
+    event: str
+) -> None:
     list_level.append(level)
     if event in dict_event:
         dict_event[event] += 1
@@ -63,56 +68,61 @@ def stream_analytics(list_level: list, dict_event: dict, nb_game: int) -> None:
     print(f"Level-up events: {dict_event.get('leveled up', 0)}")
 
 
-def get_number_fibonacci(nb: int):
-    f_nb = [0, 1]
+def get_number_fibonacci(nb: int) -> Generator[int, Any, None]:
+    f_nb: list[int] = [0, 1]
 
     for i in range(nb):
         if i < 2:
             yield i
         else:
-            fnb = f_nb[0] + f_nb[1]
+            fnb: int = f_nb[0] + f_nb[1]
             f_nb[0] = f_nb[1]
             f_nb[1] = fnb
             yield fnb
 
 
 if __name__ == "__main__":
-    list_level: list = []
-    dict_event: dict = {}
-
+    list_level: list[int] = []
+    dict_event: dict[str, int] = {}
     print("=== Game Data Stream Processor ===\n")
-    start_time = time.time()
-    nb_game = 100
-    generator = game_stream(nb_game)
+    start_time: float = time.time()
+    nb_game = 1000
+    generator: Generator[Tuple[str, int, str, str], None, None] = game_stream(
+        nb_game)
     for i in range(nb_game):
+        string_event: str
+        lvl: int
+        action: str
+        player: str
         string_event, lvl, action, player = next(generator)
         stream_data(list_level, dict_event, lvl, action)
         print(string_event)
-    end_time = time.time()
-
+    end_time: float = time.time()
     print("\n=== Stream Analytics ===")
     stream_analytics(list_level, dict_event, nb_game)
-    processing_time = end_time - start_time
+    processing_time: float = end_time - start_time
     print("\nMemory usage: Constant (streaming)")
     print(f"Processing time: {processing_time:.3f} seconds")
 
     print("\n=== Generator Demonstration ===")
     fibonacci_digit_number: int = 10
-    generator_fibonacci = get_number_fibonacci(fibonacci_digit_number)
+    generator_fibonacci: Generator[int, Any, None] = get_number_fibonacci(
+        fibonacci_digit_number)
     sys.stdout.write(f"Fibonacci sequence (first {fibonacci_digit_number}): ")
     for i in range(fibonacci_digit_number):
-        prime = next(generator_fibonacci)
+        prime: int = next(generator_fibonacci)
         sys.stdout.write(str(prime))
         if i != fibonacci_digit_number - 1:
-            sys.stdout.write(",")
+            sys.stdout.write(", ")
     sys.stdout.write("\n")
 
     prime_digit_number: int = 5
-    generator_prime = get_number_prime(prime_digit_number)
+    generator_prime: Generator[int, Any, None] = get_number_prime(
+        prime_digit_number)
     sys.stdout.write(f"Prime numbers (first {prime_digit_number}): ")
     for i in range(prime_digit_number):
         prime = next(generator_prime)
         sys.stdout.write(str(prime))
         if i != prime_digit_number - 1:
-            sys.stdout.write(",")
+            sys.stdout.write(", ")
     sys.stdout.write("\n")
