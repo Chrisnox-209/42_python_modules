@@ -48,7 +48,7 @@ def dict_comprehension(data: dict) -> None:
     print(f"Achievement counts: {dict_achievements}")
 
 
-def set_comprehension(data) -> None:
+def set_comprehension(data: dict) -> None:
     set_player: set = set()
     set_achievements: set = set()
     set_regions: set = set()
@@ -61,6 +61,37 @@ def set_comprehension(data) -> None:
     print(f"Unique players: {sorted(set_player)}")
     print(f"Unique achievements: {set_achievements}")
     print(f"Active regions: {sorted(set_regions, reverse=True)}")
+
+
+def combined_comprehension(data: dict) -> None:
+    achivements_unique: set = set()
+    total_players: int = sum([1 for _ in data])
+    total_score: float = 0
+    max_point: int = 0
+    list_performer: list = []
+    for name in data:
+        total_score += data[name]["score"]
+        if data[name]["score"] > max_point:
+            list_performer = [name, data[name]["score"],
+                              len(data[name]["achievements"])]
+            max_point = data[name]["score"]
+        for achivements in data[name]["achievements"]:
+            achivements_unique.add(achivements)
+    print(f"Total players: {total_players}")
+    print(f"Total unique achievements: {len(achivements_unique)}")
+    print(f"Average score: {total_score / total_players:.1f}")
+    if not list_performer:
+        print("No valid scores to calculate")
+    else:
+        point: str = ('point' if list_performer[1] <= 1 else 'points')
+        achievement: str = ('achievement'
+                            if list_performer[2] <= 1
+                            else 'achievements'
+                            )
+        print(
+            f"Top performer: {list_performer[0]} "
+            f"({list_performer[1]} {point}, {list_performer[2]} {achievement})"
+        )
 
 
 if __name__ == "__main__":
@@ -110,3 +141,5 @@ if __name__ == "__main__":
     dict_comprehension(data)
     print("\n=== Set Comprehension Examples ===")
     set_comprehension(data)
+    print("\n=== Combined Analysis ===")
+    combined_comprehension(data)
