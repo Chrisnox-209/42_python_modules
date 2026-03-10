@@ -15,19 +15,21 @@ def parsing(string: str, inventory: dict) -> dict:
             key += letter
         else:
             value += letter
-
-    inventory[key] = value
+    error_value: int | None = check_error(value)
+    if error_value is None:
+        raise ValueError(f"Invalid value for {key}: {value}")
+    if key in inventory:
+        inventory[key] = inventory[key] + error_value
+    else:
+        inventory[key] = error_value
     return inventory
 
 
-def check_error(inventory: dict) -> dict | None:
+def check_error(value: str) -> int | None:
     try:
-        for key in inventory:
-            inventory[key] = int(inventory[key])
+        return int(value)
     except ValueError:
-        print("Error: Invalid data error")
         return None
-    return inventory
 
 
 def items_search(inventory: dict) -> bool:
@@ -90,23 +92,13 @@ def items_analysis(inventory: dict) -> None:
 
 
 def items_statistics(inventory: dict) -> None:
-    size: int = len(inventory)
     list_item: list = []
     list_item = list(inventory.items())
-    i: int = 0
-    j: int = 0
     total: int = 0
     pourcentage: float = 0
     for nb in inventory:
         total += inventory[nb]
-    while i < size - 1:
-        j = i + 1
-        if list_item[j][1] > list_item[i][1]:
-            tmp: int = list_item[j][1]
-            list_item[j] = (list_item[j][0], list_item[i][1])
-            list_item[i] = (list_item[i][0], tmp)
-            i = 0
-        i += 1
+    list_item = sorted(inventory.items(), key=lambda x: x[1], reverse=True)
     for item in list_item:
         if pourcentage <= 0 and total <= 0:
             pourcentage = 0.00
@@ -132,7 +124,7 @@ def build_inventory() -> dict | None:
     else:
         try:
             for arg in argument:
-                inventory = parsing(arg, inventory)
+                parsing(arg, inventory)
             return inventory
         except ValueError:
             print("Error: Invalid format")
@@ -142,14 +134,13 @@ def build_inventory() -> dict | None:
 if __name__ == "__main__":
     inventory: dict | None = build_inventory()
     if inventory is not None:
-        if check_error(inventory) is not None:
-            print("=== Inventory System Analysis ===")
-            items_analysis(inventory)
-            print("\n=== Inventory System Analysis ===")
-            items_statistics(inventory)
-            print("\n=== Item Categories ===")
-            items_categories(inventory)
-            print("\n=== Management Suggestions ===")
-            items_management(inventory)
-            print("\n=== Dictionary Properties Demo ===")
-            items_demo(inventory)
+        print("=== Inventory System Analysis ===")
+        items_analysis(inventory)
+        print("\n=== Inventory System Analysis ===")
+        items_statistics(inventory)
+        print("\n=== Item Categories ===")
+        items_categories(inventory)
+        print("\n=== Management Suggestions ===")
+        items_management(inventory)
+        print("\n=== Dictionary Properties Demo ===")
+        items_demo(inventory)
