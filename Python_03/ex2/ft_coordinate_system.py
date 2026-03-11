@@ -2,6 +2,7 @@ import sys
 import math
 from typing import Any
 
+
 def get_distance(gps: tuple[int, int, int]) -> float:
     gps_src: tuple = (0, 0, 0)
     calcul: float = (
