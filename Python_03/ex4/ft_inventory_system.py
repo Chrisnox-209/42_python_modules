@@ -72,15 +72,15 @@ def items_management(inventory: dict) -> None:
 
 
 def items_categories(inventory: dict) -> None:
-    Moderate: dict = {}
-    Scarce: dict = {}
+    moderate: dict = {}
+    scarce: dict = {}
     for item in inventory:
         if inventory[item] > 3:
-            Moderate[item] = inventory[item]
+            moderate[item] = inventory[item]
         else:
-            Scarce[item] = inventory[item]
-    print(f"Moderate: {Moderate}")
-    print(f"Scarce: {Scarce}")
+            scarce[item] = inventory[item]
+    print(f"Moderate: {moderate}")
+    print(f"Scarce: {scarce}")
 
 
 def items_analysis(inventory: dict) -> None:
