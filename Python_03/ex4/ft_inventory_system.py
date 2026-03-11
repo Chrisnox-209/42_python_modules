@@ -110,7 +110,7 @@ def items_statistics(inventory: dict) -> None:
     print("\n=== Inventory Statistics ===")
     print(f"Most abundant: {list_item[0][0]} ({list_item[0][1]} "
           f"{'units' if list_item[0][1] > 1 else 'unit'})")
-    print(f"Most abundant: {list_item[len(list_item) - 1][0]} "
+    print(f"Least abundant: {list_item[len(list_item) - 1][0]} "
           f"({list_item[len(list_item) - 1][1]} "
           f"{'units' if list_item[len(list_item) - 1][1] > 1 else 'unit'})")
 
