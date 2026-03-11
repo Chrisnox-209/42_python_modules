@@ -1,6 +1,5 @@
 import sys
 import math
-from typing import Any
 
 
 def get_distance(gps: tuple[int, int, int]) -> float:
@@ -40,6 +39,9 @@ def parse() -> tuple[int, int, int] | None:
 if __name__ == "__main__":
     print("=== Game Coordinate System ===\n")
     gps_demo: tuple[int, int, int] = (10, 20, 5)
+    x: int = 0
+    y: int = 0
+    z: int = 0
     distance: float = get_distance(gps_demo)
     print(f"Position created: {gps_demo}")
     print(f"Distance between(0, 0, 0) and {gps_demo}: {distance:.2f}")
@@ -51,12 +53,9 @@ if __name__ == "__main__":
         print(f"Position created: {gps_user}")
         print(f"Distance between(0, 0, 0) and {gps_user}: {distance:.2f}")
         print()
+        x, y, z = gps_user
     else:
         print("Invalid or incomplete coordinates.")
 
-    x: int | Any = None
-    y: int | Any = None
-    z: int | Any = None
-    x, y, z = gps_user
     print(f"Unpacking demonstration:\n Player at x={x}, y={y}, z={z}\n"
           "Coordinates: X=3, Y=4, Z=0")
