@@ -5,8 +5,8 @@ def list_comprehension(data: dict) -> None:
     list_name: list = [data[name]["score"] * 2 for name in data]
     list_score: list = [name for name in data if data[name]["score"] > 2000]
     list_active: list = [name for name in data if data[name]["active"]]
-    print(f"High scorers (>2000): {list_name}")
-    print(f"Scores doubled: {list_score}")
+    print(f"High scorers (>2000): {list_score}")
+    print(f"Scores doubled: {list_name}")
     print(f"Active players: {list_active}")
 
 
@@ -29,7 +29,7 @@ def dict_comprehension(data: dict) -> None:
         key_min: Any = None
         for key in dict_categories:
             if key_min is None or \
-                    dict_categories[key] < dict_categories[key_min]:
+                    dict_categories[key] > dict_categories[key_min]:
                 key_min = key
         dict_sort[key_min] = dict_categories[key_min]
         del dict_categories[key_min]
