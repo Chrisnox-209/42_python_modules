@@ -57,5 +57,5 @@ if __name__ == "__main__":
     else:
         print("Invalid or incomplete coordinates.")
 
-    print(f"Unpacking demonstration:\n Player at x={x}, y={y}, z={z}\n"
+    print(f"Unpacking demonstration:\nPlayer at x={x}, y={y}, z={z}\n"
           "Coordinates: X=3, Y=4, Z=0")
