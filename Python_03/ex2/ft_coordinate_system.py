@@ -1,6 +1,6 @@
 import sys
 import math
-
+from typing import Any
 
 def get_distance(gps: tuple[int, int, int]) -> float:
     gps_src: tuple = (0, 0, 0)
@@ -53,5 +53,9 @@ if __name__ == "__main__":
     else:
         print("Invalid or incomplete coordinates.")
 
-    print("Unpacking demonstration:\n Player at x=3, y=4, z=0\n"
+    x: int | Any = None
+    y: int | Any = None
+    z: int | Any = None
+    x, y, z = gps_user
+    print(f"Unpacking demonstration:\n Player at x={x}, y={y}, z={z}\n"
           "Coordinates: X=3, Y=4, Z=0")
