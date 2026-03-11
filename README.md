@@ -103,17 +103,19 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 
   ```
 ├── ex0/
-│   └──
+│   └── ft_command_quest.py
 ├── ex1/
-│   └──
+│   └── ft_score_analytics.py
 ├── ex2/
-│   └──
+│   └── ft_coordinate_system.py
 ├── ex3/
-│   └──
+│   └── ft_achievement_tracker.py
 ├── ex4/
-│   └──
-└── ex5/
-      └──
+│   └── ft_inventory_system.py
+├── ex5/
+│   └── ft_data_stream.py
+└── ex6/
+    └── ft_analytics_dashboard.py	  
   ```
   </details>
 
@@ -122,17 +124,18 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 
   ```
 ├── ex0/
-│   └──
+│   └── ft_ancient_text.py
 ├── ex1/
-│   └──
+│   └── ft_archive_creation.py
 ├── ex2/
-│   └──
+│   └── ft_stream_management.py
 ├── ex3/
-│   └──
+│   └── ft_vault_security.py
 ├── ex4/
-│   └──
-└── ex5/
-      └──
+│   └── ft_crisis_response.py
+└── Generator/
+      ├── sample_data.json
+	  └── data_generator.py
   ```
   </details>
 
