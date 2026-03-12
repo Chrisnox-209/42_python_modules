@@ -1,5 +1,5 @@
 
-def archive_creation(file_name: str) -> None:
+def archive_creation(file_name: str) -> bool:
     print(f"Initializing new storage unit: {file_name}")
     try:
         with open(file_name, "w", encoding="utf-8") as file:
