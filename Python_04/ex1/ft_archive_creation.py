@@ -7,8 +7,10 @@ def archive_creation(file_name: str) -> None:
             file.write("[ENTRY 002] Efficiency increased by 347%\n")
             file.write("[ENTRY 003] Archived by Data Archivist trainee\n")
         print("Storage unit created successfully...\n")
+        return True
     except Exception as error:
         print(error)
+        return False
 
 
 def reading_archive(file_name: str) -> bool:
@@ -25,7 +27,6 @@ def reading_archive(file_name: str) -> bool:
 if __name__ == "__main__":
     file_name: str = "new_discovery.txt"
     print("=== CYBER ARCHIVES- PRESERVATION SYSTEM ===\n")
-    archive_creation(file_name)
-    if reading_archive(file_name):
+    if archive_creation(file_name) and reading_archive(file_name):
         print("Data inscription complete. Storage unit sealed.")
         print("Archive 'new_discovery.txt' ready for long-term preservation.")
