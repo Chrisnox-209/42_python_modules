@@ -144,17 +144,11 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 
   ```
 ├── ex0/
-│   └──
+│   └── stream_processor.py
 ├── ex1/
-│   └──
-├── ex2/
-│   └──
-├── ex3/
-│   └──
-├── ex4/
-│   └──
-└── ex5/
-      └──
+│   └── data_stream.py
+└── ex2/
+    └── nexus_pipeline.py
   ```
   </details>
 
