@@ -4,9 +4,6 @@ from typing import Any, List
 
 class DataProcessor(ABC):
 
-    def __init__(self, data: Any) -> None:
-        self.data: Any = data
-
     @abstractmethod
     def process(self, data: Any) -> str:
         pass
@@ -22,15 +19,15 @@ class DataProcessor(ABC):
 class NumericProcessor(DataProcessor):
 
     def process(self, data: Any) -> str:
-        size: int = len(self.data)
-        list_data: list[int] = self.data
+        size: int = len(data)
+        list_data: list[int] = data
         sum_data: int = sum(list_data)
         return (f"Processed {size} numeric values, "
                 f"sum={sum_data}, avg={sum_data/size}")
 
     def validate(self, data: Any) -> bool:
         try:
-            for nb in self.data:
+            for nb in data:
                 nb = int(nb)
             return True
         except ValueError as error:
@@ -38,21 +35,20 @@ class NumericProcessor(DataProcessor):
             return False
 
     def format_output(self, result: str) -> str:
-        self.result: str = result
         return super().format_output(result) + "\n"
 
 
 class TextProcessor(DataProcessor):
 
     def process(self, data: Any) -> str:
-        letters: int = len(self.data)
-        words: list[str] = self.data.split()
+        letters: int = len(data)
+        words: list[str] = data.split()
         nb_words: int = len(words)
         return (f"Processed text: {letters} characters, {nb_words} words")
 
     def validate(self, data: Any) -> bool:
         try:
-            if not isinstance(self.data, str):
+            if not isinstance(data, str):
                 raise TypeError
             return True
         except TypeError as error:
@@ -60,21 +56,22 @@ class TextProcessor(DataProcessor):
             return False
 
     def format_output(self, result: str) -> str:
-        self.result: str = result
         return super().format_output(result) + "\n"
 
 
 class LogProcessor(DataProcessor):
 
     def process(self, data: Any) -> str:
-        check: list[str] = self.data.split(":", 1)
+        check: list[str] = data.split(":", 1)
         if check[0] == "ERROR":
-            message: str = "[ALERT]"
-        return (f"{message} ERROR level detected:{check[1]}")
+            return (f"[ALERT] ERROR level detected:{check[1]}")
+        elif check[0] == "INFO":
+            return (f"[INFO] INFO level detected:{check[1]}")
+        raise ValueError
 
     def validate(self, data: Any) -> bool:
         try:
-            if type(self.data) is not str:
+            if type(data) is not str:
                 raise TypeError
             return True
         except TypeError as error:
@@ -82,7 +79,6 @@ class LogProcessor(DataProcessor):
             return False
 
     def format_output(self, result: str) -> str:
-        self.result: str = result
         return super().format_output(result) + "\n"
 
 
@@ -91,36 +87,36 @@ if __name__ == "__main__":
 
     print("Initializing Numeric Processor...")
     tab_nb: list[int] = [1, 2, 3, 4, 5]
-    obj_num = NumericProcessor(tab_nb)
+    obj_num = NumericProcessor()
     print(f"Processing data: {tab_nb}")
     try:
-        if obj_num.validate(obj_num.data):
+        if obj_num.validate(tab_nb):
             print("Validation: Numeric data verified")
-            result_num: str = obj_num.process(obj_num.data)
+            result_num: str = obj_num.process(tab_nb)
             print(obj_num.format_output(result_num))
     except Exception as error:
         print(error)
 
     print("Initializing Text Processor...")
     text: str = "Hello Nexus World"
-    obj_text = TextProcessor(text)
+    obj_text = TextProcessor()
     print(f'Processing data: "{text}"')
     try:
-        if obj_text.validate(obj_text.data):
+        if obj_text.validate(text):
             print("Validation: Numeric data verified")
-            result_text: str = obj_text.process(obj_text.data)
+            result_text: str = obj_text.process(text)
             print(obj_text.format_output(result_text))
     except Exception as error:
         print(error)
 
     print("Initializing Log Processor...")
     log: str = "ERROR: Connection timeout"
-    obj_log = LogProcessor(log)
+    obj_log = LogProcessor()
     print(f'Processing data: "{log}"')
     try:
-        if obj_log.validate(obj_log.data):
+        if obj_log.validate(log):
             print("Validation: Log entry verified")
-            result_log: str = obj_log.process(obj_log.data)
+            result_log: str = obj_log.process(log)
             print(obj_log.format_output(result_log))
     except Exception as error:
         print(error)
@@ -128,8 +124,11 @@ if __name__ == "__main__":
     print("=== Polymorphic Processing Demo ===")
 
     processors: List[DataProcessor] = [obj_num, obj_text, obj_log]
-
-    for i, processor in enumerate(processors, start=1):
-        print(f"Result {i}: {processor.process(processor.data)}")
+    data: list = [[2, 2, 2], 'Hello Word!z', 'INFO: System ready']
+    i: int = 1
+    for processor, info in zip(processors, data):
+        result: str = processor.process(info)
+        print(f"Result {i}: {processor.process(info)}")
+        i += 1
 
     print("\nFoundation systems online. Nexus ready for advanced streams.")
