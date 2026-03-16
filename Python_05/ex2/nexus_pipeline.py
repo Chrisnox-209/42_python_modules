@@ -1,6 +1,6 @@
-import collections
 from typing import Protocol, Any, Union, List
 from abc import ABC, abstractmethod
+
 
 class ProcessingStage(Protocol):
 
@@ -32,7 +32,8 @@ class OutputStage:
     def process(self, data: Any) -> Any:
         data_str: str = str(data)
         if "sensor" in data_str:
-            return "Output: Processed temperature reading: 23.5°C (Normal range)"
+            return ("Output: Processed temperature reading: 23.5°C"
+                    "(Normal range)")
         elif "user" in data_str:
             return "Output: User activity logged: 1 actions processed"
         else:
@@ -41,7 +42,7 @@ class OutputStage:
 
 class ProcessingPipeline(ABC):
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.stages: List[ProcessingStage] = []
 
     def add_stage(self, stage: ProcessingStage) -> None:
@@ -54,7 +55,7 @@ class ProcessingPipeline(ABC):
 
 class JSONAdapter(ProcessingPipeline):
 
-    def __init__(self, pipeline_id: str):
+    def __init__(self, pipeline_id: str) -> None:
         super().__init__()
         self.pipeline_id: str = pipeline_id
         self.add_stage(InputStage())
@@ -74,7 +75,7 @@ class JSONAdapter(ProcessingPipeline):
 
 class CSVAdapter(ProcessingPipeline):
 
-    def __init__(self, pipeline_id: str):
+    def __init__(self, pipeline_id: str) -> None:
         super().__init__()
         self.pipeline_id: str = pipeline_id
         self.add_stage(InputStage())
@@ -94,7 +95,7 @@ class CSVAdapter(ProcessingPipeline):
 
 class StreamAdapter(ProcessingPipeline):
 
-    def __init__(self, pipeline_id: str):
+    def __init__(self, pipeline_id: str) -> None:
         super().__init__()
         self.pipeline_id: str = pipeline_id
         self.add_stage(InputStage())
@@ -114,7 +115,7 @@ class StreamAdapter(ProcessingPipeline):
 
 class NexusManager:
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.pipelines: List[ProcessingPipeline] = []
 
     def add_pipeline(self, pipeline: ProcessingPipeline) -> None:
