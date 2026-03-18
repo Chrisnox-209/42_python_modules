@@ -156,18 +156,23 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 <summary><font size="2" color="#0052a4"><b>Python_06/</b></font></summary>
 
   ```
-├── ex0/
-│   └──
-├── ex1/
-│   └──
-├── ex2/
-│   └──
-├── ex3/
-│   └──
-├── ex4/
-│   └──
-└── ex5/
-      └──
+├── alchemy/
+│   ├── grimoire/
+│	│	├──	__init__.py
+│	│	├── spellbook.py
+│	│	└── validator.py
+│	├── transmutation/
+│	│	├──	__init__.py
+│	│	├── advanced.py
+│	│	└── basic.py
+│	├── __init__.py
+│	├── elements.py
+│	└── potions.py
+├── ft_circular_curse.py   
+├── ft_import_transmutation.py
+├── ft_pathway_debate.py
+└── ft_sacred_scroll.py
+
   ```
   </details>
 
