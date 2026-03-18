@@ -1,4 +1,4 @@
-from alchemy.grimoire.validator import validate_ingredients
+from alchemy.grimoire import validate_ingredients, record_spell
 
 if __name__ == "__main__":
     print("\n=== Circular Curse Breaking ===\n")
@@ -11,12 +11,15 @@ if __name__ == "__main__":
     print()
 
     print("Testing spell recording with validation:")
-    print('record_spell("Fireball", "fire air"): Spell recorded: Fireball (fire air- VALID)')
-    print('record_spell("Dark Magic", "shadow"): Spell rejected: Dark Magic (shadow- INVALID)')
+    print('record_spell("Fireball", "fire air"): '
+          f'{record_spell("Fireball", "fire air")}')
+    print('record_spell("Dark Magic", "shadow"): '
+          f'{record_spell("Dark Magic", "shadow")}')
     print()
 
     print("Testing late import technique:")
-    print('record_spell("Lightning", "air"): Spell recorded: Lightning (air- VALID)')
+    print('record_spell("Lightning", "air"): '
+          f'{record_spell("Lightning", "air")}')
     print()
 
     print("Circular dependency curse avoided using late imports!")
