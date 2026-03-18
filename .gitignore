@@ -1,2 +1,6 @@
 # Ignorer les fichiers cache de mypy
 *.mypy_cache
+
+# Ignorer les dossiers __pycache__
+__pycache__/
+*.pyc
