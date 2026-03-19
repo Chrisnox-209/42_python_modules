@@ -9,18 +9,19 @@ class CreatureCard(Card):
                  attack: int,
                  health: int) -> None:
         super().__init__(name, cost, Rarity_Enum)
+
+        if not isinstance(attack, int) or not isinstance(health, int):
+            raise TypeError("Attack and health must be integers")
+
+        if attack <= 0:
+            raise ValueError("Attack must be positive")
+
+        if health <= 0:
+            raise ValueError("Health must be positive")
+
+        self.attack = int(attack)
+        self.health = int(health)
         self.type = "Creature"
-        try:
-            self.attack = int(attack)
-            self.health = int(health)
-        except ValueError:
-            raise ValueError("Attack and health must be integers")
-
-        if self.attack <= 0:
-            raise ValueError("attack must be positive")
-
-        if self.health <= 0:
-            raise ValueError("health must be positive")
 
     def play(self, game_state: dict) -> dict:
         mana: int = game_state["mana"] - self.cost
