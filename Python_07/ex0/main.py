@@ -8,13 +8,11 @@ if __name__ == "__main__":
     attack: int = 7
     health: int = 5
     mana: int = 6
-    effect: str = 'Creature summoned to battlefield'
     target: str = 'Goblin Warrior'
     game_state: dict = {
         'card_played': name,
         'mana': mana,
         'cost': cost,
-        'effect': effect
         }
 
     print("\n=== DataDeck Card Foundation ===\n")
@@ -43,4 +41,4 @@ if __name__ == "__main__":
     print("Testing insufficient mana (3 available):")
     print(f"Playable: {card_01.is_playable(3)}")
 
-    print("\nAbstract pattern successfully demonstrated")
+    print("\nAbstract pattern successfully demonstrated!")
