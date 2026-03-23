@@ -1,14 +1,20 @@
 from ex0.Card import Card
+from enum import Enum
 
+
+class type_Enum(str, Enum):
+    CREATURE = "Creature"
+    SPELL = "Spell"
+    ARTIFACT = "Artifact"
 
 class CreatureCard(Card):
     def __init__(self,
                  name: str,
                  cost: int,
-                 Rarity_Enum: str,
+                 rarity: str,
                  attack: int,
                  health: int) -> None:
-        super().__init__(name, cost, Rarity_Enum)
+        super().__init__(name, cost, rarity)
 
         if not isinstance(attack, int) or not isinstance(health, int):
             raise TypeError("Attack and health must be integers")
@@ -21,8 +27,8 @@ class CreatureCard(Card):
 
         self.attack = int(attack)
         self.health = int(health)
-        self.type = "Creature"
-
+        self.type = type_Enum.CREATURE
+        
     def play(self, game_state: dict) -> dict:
         return {"card_played": self.name,
                 "mana_used": self.cost,
