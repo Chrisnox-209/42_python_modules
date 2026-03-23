@@ -1,4 +1,8 @@
 from ex0.Card import Card
+from ex0.CreatureCard import CreatureCard
+from ex1.SpellCard import SpellCard
+from ex1.ArtifactCard import ArtifactCard
+from enum import Enum
 import random
 
 
@@ -29,11 +33,11 @@ class Deck:
         total_cost: int = 0
 
         for monstre in self.list_card:
-            if monstre.type == "Creature":
+            if isinstance(monstre, CreatureCard):
                 creatures += 1
-            if monstre.type == "Spell":
+            if isinstance(monstre, SpellCard):
                 spells += 1
-            if monstre.type == "Artifact":
+            if isinstance(monstre, ArtifactCard):
                 artifacts += 1
             total_cost += monstre.cost
         size_dict: int = len(self.list_card)
@@ -45,4 +49,4 @@ class Deck:
                 "creatures": creatures,
                 "spells": spells,
                 "artifacts": artifacts,
-                "avg_cost:": round(avg_cost, 2)}
+                "avg_cost": round(avg_cost, 2)}

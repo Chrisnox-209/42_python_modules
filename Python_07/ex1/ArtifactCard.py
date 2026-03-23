@@ -1,5 +1,11 @@
 from ex0.Card import Card
+from enum import Enum
 
+
+class type_Enum(str, Enum):
+    CREATURE = "Creature"
+    SPELL = "Spell"
+    ARTIFACT = "Artifact"
 
 class ArtifactCard(Card):
     def __init__(self, name: str,
@@ -13,11 +19,11 @@ class ArtifactCard(Card):
         if not isinstance(durability, int):
             raise TypeError("Durability must be integers")
         if durability <= 0:
-            raise TypeError("Durability must be positive")
+            raise ValueError("Durability must be positive")
 
         self.durability: int = durability
         self.effect: str = effect
-        self.type = "Artifact"
+        self.type = type_Enum.ARTIFACT
 
     def play(self, game_state: dict) -> dict:
         return {"card_played": self.name,

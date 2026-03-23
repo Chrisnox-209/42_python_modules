@@ -23,7 +23,7 @@ if __name__ == "__main__":
     try:
         card_02 = ArtifactCard("Mana Crystal",
                                3,
-                               "rare",
+                               "Rare",
                                8,
                                "Permanent: +1 mana per turn"
                                )
@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     card_03 = SpellCard("Lightning Bolt",
                         2,
-                        "common",
+                        "Common",
                         "Deal 3 damage to target"
                         )
     print("\n=== DataDeck Deck Builder ===\n")
@@ -53,7 +53,7 @@ if __name__ == "__main__":
             deck_obj.shuffle()
         mana: int = random.randint(1, 10)
         card_drawd: Card = deck_obj.draw_card()
-        print(f"Drew: {card_drawd.name} ({card_drawd.type})")        
+        print(f"Drew: {card_drawd.name} ({card_drawd.type})")
         if card_drawd.is_playable(mana):
             print(f"Play result: {card_drawd.play(game_state)}")
             deck_obj.remove_card(card_drawd.name)

@@ -1,5 +1,11 @@
 from ex0.Card import Card
+from enum import Enum
 
+
+class type_Enum(str, Enum):
+    CREATURE = "Creature"
+    SPELL = "Spell"
+    ARTIFACT = "Artifact"
 
 class SpellCard(Card):
     def __init__(self,
@@ -10,7 +16,7 @@ class SpellCard(Card):
 
         super().__init__(name, cost, rarity)
         self.effect_type: str = effect_type
-        self.type = "Spell"
+        self.type = type_Enum.SPELL
 
     def play(self, game_state: dict) -> dict:
         return {"card_played": self.name,
