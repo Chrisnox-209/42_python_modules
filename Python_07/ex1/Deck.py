@@ -10,9 +10,9 @@ class Deck:
         self.list_card.append(card)
 
     def remove_card(self, card_name: str) -> bool:
-        for name in self.list_card:
-            if card_name == name:
-                self.list_card.remove(card_name)
+        for card in self.list_card:
+            if card.name == card_name:
+                self.list_card.remove(card)
                 return True
         return False
 
@@ -31,14 +31,16 @@ class Deck:
         for monstre in self.list_card:
             if monstre.type == "Creature":
                 creatures += 1
-            if monstre.type == "spell":
+            if monstre.type == "Spell":
                 spells += 1
-            if monstre.type == "artifact":
+            if monstre.type == "Artifact":
                 artifacts += 1
             total_cost += monstre.cost
         size_dict: int = len(self.list_card)
-        avg_cost: float = total_cost / size_dict
-
+        if size_dict > 0:
+            avg_cost: float = total_cost / size_dict
+        else:
+            avg_cost = 0
         return {"total_cards": size_dict,
                 "creatures": creatures,
                 "spells": spells,
