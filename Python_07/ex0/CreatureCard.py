@@ -1,11 +1,6 @@
 from ex0.Card import Card
-from enum import Enum
+from ex0.Card import type_Enum
 
-
-class type_Enum(str, Enum):
-    CREATURE = "Creature"
-    SPELL = "Spell"
-    ARTIFACT = "Artifact"
 
 class CreatureCard(Card):
     def __init__(self,
@@ -28,7 +23,7 @@ class CreatureCard(Card):
         self.attack = int(attack)
         self.health = int(health)
         self.type = type_Enum.CREATURE
-        
+
     def play(self, game_state: dict) -> dict:
         return {"card_played": self.name,
                 "mana_used": self.cost,
@@ -45,7 +40,7 @@ class CreatureCard(Card):
     def get_card_info(self) -> dict:
         dict_info: dict = (super().get_card_info())
         dict_info.update({
-            "type": self.type,
+            "type": self.type.value,
             "attack": self.attack,
             "health": self.health,
             })
