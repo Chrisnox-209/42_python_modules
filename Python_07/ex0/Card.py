@@ -2,10 +2,12 @@ from abc import ABC, abstractmethod
 from typing import Dict
 from enum import Enum
 
+
 class type_Enum(str, Enum):
     CREATURE = "Creature"
     SPELL = "Spell"
     ARTIFACT = "Artifact"
+
 
 class Card(ABC):
     def __init__(self, name: str, cost: int, rarity: str) -> None:
