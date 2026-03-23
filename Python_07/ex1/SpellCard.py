@@ -1,11 +1,6 @@
 from ex0.Card import Card
-from enum import Enum
+from ex0.Card import type_Enum
 
-
-class type_Enum(str, Enum):
-    CREATURE = "Creature"
-    SPELL = "Spell"
-    ARTIFACT = "Artifact"
 
 class SpellCard(Card):
     def __init__(self,
