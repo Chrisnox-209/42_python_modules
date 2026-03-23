@@ -9,11 +9,7 @@ if __name__ == "__main__":
     health: int = 5
     mana: int = 6
     target: str = 'Goblin Warrior'
-    game_state: dict = {
-        'card_played': name,
-        'mana': mana,
-        'cost': cost,
-        }
+    game_state: dict = {}
 
     print("\n=== DataDeck Card Foundation ===\n")
 

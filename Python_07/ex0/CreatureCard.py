@@ -24,10 +24,8 @@ class CreatureCard(Card):
         self.type = "Creature"
 
     def play(self, game_state: dict) -> dict:
-        mana: int = game_state["mana"] - self.cost
-        game_state.update({"mana": mana})
-        return {"card_played": game_state["card_played"],
-                "mana_used": game_state["cost"],
+        return {"card_played": self.name,
+                "mana_used": self.cost,
                 "effect": "Creature summoned to battlefield'"}
 
     def attack_target(self, target: str) -> dict:
