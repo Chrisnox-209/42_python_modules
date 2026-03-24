@@ -115,7 +115,7 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 ├── ex5/
 │   └── ft_data_stream.py
 └── ex6/
-    └── ft_analytics_dashboard.py	  
+    └── ft_analytics_dashboard.py
   ```
   </details>
 
@@ -158,17 +158,17 @@ Le cursus est structuré autour de la montée en puissance des compétences :
   ```
 ├── alchemy/
 │   ├── grimoire/
-│	│	├──	__init__.py
-│	│	├── spellbook.py
-│	│	└── validator.py
-│	├── transmutation/
-│	│	├──	__init__.py
-│	│	├── advanced.py
-│	│	└── basic.py
-│	├── __init__.py
-│	├── elements.py
-│	└── potions.py
-├── ft_circular_curse.py   
+│	  │	  ├──	__init__.py
+│	  │	  ├── spellbook.py
+│	  │	  └── validator.py
+│	  ├── transmutation/
+│	  │	  ├──	__init__.py
+│	  │	  ├── advanced.py
+│	  │	  └── basic.py
+│	  ├── __init__.py
+│	  ├── elements.py
+│	  └── potions.py
+├── ft_circular_curse.py
 ├── ft_import_transmutation.py
 ├── ft_pathway_debate.py
 └── ft_sacred_scroll.py
@@ -181,17 +181,37 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 
   ```
 ├── ex0/
-│   └──
+│   ├── __init__.py
+│   ├── Card.py
+│   ├── CreatureCard.py
+│   └── main.py
 ├── ex1/
-│   └──
+│   ├── __init__.py
+│   ├── ArtifactCard.py
+│   ├── Deck.py
+│   ├── main.py
+|   └── SpellCard.py
 ├── ex2/
-│   └──
+│   ├── __init__.py
+│   ├── Combatable.py
+│   ├── EliteCard.py
+│   ├── Magical.py
+|   └── main.py
 ├── ex3/
-│   └──
-├── ex4/
-│   └──
-└── ex5/
-      └──
+│   ├── __init__.py
+│   ├── AggressiveStrategy.py
+│   ├── CardFactory.py
+│   ├── FantasyCardFactory.py
+│   ├── GameEngine.py
+│   ├── GameStrategy.p
+|   └── main.py
+└── ex4/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── Rankable.py
+│   ├── TournamentCard.py
+│   └── TournamentPlatform.py
+
   ```
   </details>
 
