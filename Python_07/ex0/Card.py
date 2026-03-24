@@ -7,6 +7,7 @@ class type_Enum(str, Enum):
     CREATURE = "Creature"
     SPELL = "Spell"
     ARTIFACT = "Artifact"
+    ELITE = "Elite"
 
 
 class Card(ABC):
