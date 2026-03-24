@@ -135,7 +135,7 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 │   └── ft_crisis_response.py
 └── Generator/
       ├── sample_data.json
-	  └── data_generator.py
+    └── data_generator.py
   ```
   </details>
 
@@ -158,16 +158,16 @@ Le cursus est structuré autour de la montée en puissance des compétences :
   ```
 ├── alchemy/
 │   ├── grimoire/
-│	  │	  ├──	__init__.py
-│	  │	  ├── spellbook.py
-│	  │	  └── validator.py
-│	  ├── transmutation/
-│	  │	  ├──	__init__.py
-│	  │	  ├── advanced.py
-│	  │	  └── basic.py
-│	  ├── __init__.py
-│	  ├── elements.py
-│	  └── potions.py
+│	│	  ├──	__init__.py
+│	│	  ├── spellbook.py
+│	│	  └── validator.py
+│	├── transmutation/
+│	│	  ├──	__init__.py
+│	│	  ├── advanced.py
+│	│	  └── basic.py
+│	├── __init__.py
+│	├── elements.py
+│	└── potions.py
 ├── ft_circular_curse.py
 ├── ft_import_transmutation.py
 ├── ft_pathway_debate.py
@@ -206,11 +206,11 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 │   ├── GameStrategy.p
 |   └── main.py
 └── ex4/
-│   ├── __init__.py
-│   ├── main.py
-│   ├── Rankable.py
-│   ├── TournamentCard.py
-│   └── TournamentPlatform.py
+    ├── __init__.py
+    ├── main.py
+    ├── Rankable.py
+    ├── TournamentCard.py
+    └── TournamentPlatform.py
 
   ```
   </details>
