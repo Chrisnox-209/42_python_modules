@@ -22,7 +22,7 @@ class CreatureCard(Card):
 
         self.attack = int(attack)
         self.health = int(health)
-        self.type = type_Enum.CREATURE
+        self.type: type_Enum = type_Enum.CREATURE
 
     def play(self, game_state: dict) -> dict:
         return {"card_played": self.name,
