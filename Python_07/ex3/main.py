@@ -18,3 +18,5 @@ if __name__ == "__main__":
     print("\nSimulating aggressive turn...")
     game_engine.configure_engine(my_factory, my_strategy)
     game_engine.simulate_turn()
+
+    my_factory.create_creature(54)
