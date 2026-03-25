@@ -18,7 +18,7 @@ class ArtifactCard(Card):
 
         self.durability: int = durability
         self.effect: str = effect
-        self.type = type_Enum.ARTIFACT
+        self.type: type_Enum = type_Enum.ARTIFACT
 
     def play(self, game_state: dict) -> dict:
         return {"card_played": self.name,

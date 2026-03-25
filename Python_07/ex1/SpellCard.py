@@ -11,7 +11,7 @@ class SpellCard(Card):
 
         super().__init__(name, cost, rarity)
         self.effect_type: str = effect_type
-        self.type = type_Enum.SPELL
+        self.type: type_Enum = type_Enum.SPELL
 
     def play(self, game_state: dict) -> dict:
         return {"card_played": self.name,
