@@ -2,6 +2,7 @@ from ex0.Card import type_Enum
 from ex0.Card import Card
 from ex2.Combatable import Combatable
 from ex2.Magical import Magical
+from typing import Any
 import random
 
 
@@ -24,13 +25,13 @@ class EliteCard(Card, Combatable, Magical):
             raise ValueError("attack_force has to be positive")
         if defense_force < 0:
             raise ValueError("defense_force cannot be negative")
-        self.health = health
-        self.attack_force = attack_force
-        self.defense_force = defense_force
-        self.spell_action = spell_action
-        self.store_mana = store_mana
-        self.combat_type = combat_type
-        self.type = type_Enum.ELITE
+        self.health: int = health
+        self.attack_force: int = attack_force
+        self.defense_force: int = defense_force
+        self.spell_action: int = spell_action
+        self.store_mana: int = store_mana
+        self.combat_type: str = combat_type
+        self.type: type_Enum = type_Enum.ELITE
 
     def play(self, game_state: dict) -> dict:
         return {"card_played": self.name,
@@ -45,9 +46,9 @@ class EliteCard(Card, Combatable, Magical):
 
     def defend(self, incoming_damage: int) -> dict:
         life: bool = True
-        damage = random.randint(1, max(1, incoming_damage))
-        damage_blocked = random.randint(1, max(1, self.defense_force))
-        damage_defend = damage - damage_blocked
+        damage: int = random.randint(1, max(1, incoming_damage))
+        damage_blocked: int = random.randint(1, max(1, self.defense_force))
+        damage_defend: int = damage - damage_blocked
         self.store_mana = (self.store_mana - damage_blocked)
 
         if damage_defend < 0:
@@ -69,8 +70,9 @@ class EliteCard(Card, Combatable, Magical):
         for enemy in targets:
             targets_name.append(enemy.name)
             total_health += enemy.health
-        average = (total_health + self.store_mana) / (len(targets_name))
-        mana_used = random.randint(1, max(1, int(average)))
+        average: Any | float = ((total_health + self.store_mana)
+                                / (len(targets_name)))
+        mana_used: int = random.randint(1, max(1, int(average)))
         self.store_mana = self.store_mana - mana_used
 
         return {"caster": self.name, "spell": spell_name,
