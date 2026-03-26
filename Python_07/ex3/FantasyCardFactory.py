@@ -4,6 +4,7 @@ from ex0.Card import Card
 from ex1.ArtifactCard import ArtifactCard
 from ex1.SpellCard import SpellCard
 from enum import Enum
+from typing import List
 import random
 
 
@@ -49,8 +50,9 @@ class FantasyCardFactory(CardFactory):
                 return CreatureCard(name_or_power, cost, rarity, attack,
                                     health)
             else:
-                print(f"({name_or_power}): This creature is not in stock\n"
-                      f"list of our creatures: {self.list_creatures}")
+                raise ValueError(f"({name_or_power}): This spell is not in "
+                                 "stock\n list of our spells: "
+                                 f"{self.list_spells}")
         elif isinstance(name_or_power, int):
             return CreatureCard(name, cost, rarity, name_or_power, health)
         elif name_or_power is None:
@@ -68,8 +70,9 @@ class FantasyCardFactory(CardFactory):
             if name_or_power in self.list_spells:
                 return SpellCard(name_or_power, cost, rarity, effect_type)
             else:
-                print(f"({name_or_power}): This spell is not in stock\n"
-                      f"list of our spells: {self.list_spells}")
+                raise ValueError(f"({name_or_power}): This spell is not in "
+                                 "stock\n list of our spells: "
+                                 f"{self.list_spells}")
         elif isinstance(name_or_power, int):
             return SpellCard(name, name_or_power, rarity, effect_type)
         elif name_or_power is None:
@@ -78,19 +81,20 @@ class FantasyCardFactory(CardFactory):
     def create_artifact(self, name_or_power: str | int | None = None) -> Card:
 
         # ### Randomness Management
-        name: str = random.choice(self.list_spells)
+        name: str = random.choice(self.list_artifacts)
         cost: int = random.randint(1, 10)
         rarity: str = random.choice(list(rarity_Enum))
         durability: int = random.randint(1, 25)
         effect_type: str = random.choice(list(Effect_Artifact_Enum))
 
         if isinstance(name_or_power, str):
-            if name_or_power in self.list_spells:
+            if name_or_power in self.list_artifacts:
                 return ArtifactCard(name_or_power, cost, rarity, durability,
                                     effect_type)
             else:
-                print(f"({name_or_power}): This artifact is not in stock\n"
-                      f"list of our artifacts: {self.list_artifacts}")
+                raise ValueError(f"({name_or_power}): This spell is not in "
+                                 "stock\n list of our spells: "
+                                 f"{self.list_spells}")
         elif isinstance(name_or_power, int):
             return ArtifactCard(name, cost, rarity, name_or_power,
                                 effect_type)
@@ -98,7 +102,14 @@ class FantasyCardFactory(CardFactory):
             return ArtifactCard(name, cost, rarity, durability, effect_type)
 
     def create_themed_deck(self, size: int) -> dict:
-        pass
+        list_creation: List = [self.create_creature,
+                               self.create_spell,
+                               self.create_artifact]
+        list_cards: list = []
+        for i in range(size):
+            card: Card = random.choice(list_creation)()
+            list_cards.append(card)
+        return {"Cards": list_cards}
 
     def get_supported_types(self) -> dict:
         return {"creatures": self.list_creatures,
