@@ -6,7 +6,8 @@ class GameEngine:
 
     def configure_engine(self, factory: CardFactory,
                          strategy: GameStrategy) -> None:
-        pass
+        self.factory: CardFactory = factory
+        self.strategy: GameStrategy = strategy
 
     def simulate_turn(self) -> dict:
         pass
