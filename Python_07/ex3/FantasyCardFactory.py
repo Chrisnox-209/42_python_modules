@@ -111,6 +111,13 @@ class FantasyCardFactory(CardFactory):
             list_cards.append(card)
         return {"Cards": list_cards}
 
+    def create_ennemy_deck(self, size: int) -> dict:
+        list_cards: list = []
+        for i in range(size):
+            card: Card = self.create_creature()
+            list_cards.append(card)
+        return {"Cards": list_cards}
+
     def get_supported_types(self) -> dict:
         return {"creatures": self.list_creatures,
                 "spells": self.list_spells,
