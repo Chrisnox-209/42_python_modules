@@ -23,5 +23,9 @@ class CardFactory (ABC):
         pass
 
     @abstractmethod
+    def create_ennemy_deck(self, size: int) -> dict:
+        pass
+
+    @abstractmethod
     def get_supported_types(self) -> dict:
         pass
