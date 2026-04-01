@@ -32,7 +32,15 @@ class AggressiveStrategy(GameStrategy):
         my_hand_final = my_creature + my_spell + my_artifact
         list_targets: list = self.prioritize_targets(battlefield)
 
-        return {"Cards": "plop"}
+        return {
+            'cards_played': [card.name for card in my_hand_final],
+            'mana_used': sum(card.cost for card in my_hand_final),
+            'targets_attacked': [list_targets[0].name if
+                                 hasattr(list_targets[0], 'name')
+                                 else str(list_targets[0])]
+            if list_targets else [],
+            'damage_dealt': sum(card.attack for card in my_creature)
+        }
 
     def get_strategy_name(self) -> str:
         return self.name_strategy

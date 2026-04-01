@@ -47,6 +47,8 @@ class GameEngine:
 
         resultats_du_tour: dict = self.strategy.execute_turn(hand_list,
                                                              battlefield_list)
+        tour_damage: Any = resultats_du_tour.get('damage_dealt', 0)
+        self.total_damage += tour_damage
         self.turns += 1
         return resultats_du_tour
 
