@@ -50,7 +50,7 @@ class AggressiveStrategy(GameStrategy):
         for card in available_targets:
             if card.type == type_Enum.CREATURE:
                 list_targets.append(card)
-        list_targets: list = sorted(list_targets,
-                                    key=lambda card: (card.health),
-                                    reverse=True)
+        list_targets = sorted(list_targets,
+                              key=lambda card: (card.health),
+                              reverse=True)
         return list_targets

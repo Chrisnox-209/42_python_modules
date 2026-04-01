@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     print()
     print("\nTurn execution:")
-    print(f"Strategy: { game_engine.strategy.get_strategy_name()}")
+    print(f"Strategy: {game_engine.strategy.get_strategy_name()}")
     print(f"Actions: {tour_report}")
 
     print()
