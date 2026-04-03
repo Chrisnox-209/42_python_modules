@@ -1,0 +1,15 @@
+[project]
+name = "ex1"
+version = "0.1.0"
+license = "42"
+description = "Exemple de projet Python"
+authors = [
+	{ name="cpietrza", email="pietrza@student.42lyon.fr"}
+	]
+requires-python = ">=3.10"
+
+[tool.poetry.dependencies]
+matplotlib = "3.10.8"
+requests = "2.33.1"
+pandas = "3.0.2"
+numpy = "2.4.4"
