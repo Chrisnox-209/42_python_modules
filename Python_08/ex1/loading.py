@@ -1,27 +1,37 @@
+import sys
+
+check = True
 try:
     import pandas
-    print("[OK] pandas (3.0.2) - Data manipulation ready")
-except Exception as error:
+    print(f"[OK] pandas ({pandas.__version__}) - Data manipulation ready")
+except ImportError as error:
+    check = False
     print(f"{error}\nplease: pip install "
-          "-r requirement.txt")
+          "-r requirements.txt or poetry install")
 
 try:
     import numpy
-    print("[OK] numpy (2.4.4) - Numerical computation ready")
-except Exception as error:
+    print(f"[OK] numpy ({numpy.__version__}) - Numerical computation ready")
+except ImportError as error:
+    check = False
     print(f"{error}\nplease: pip install "
-          "-r requirement.txt")
+          "-r requirements.txt or poetry install")
 
 try:
     import requests
-    print("[OK] requests (2.33.1) - Network access ready")
-except Exception as error:
+    print(f"[OK] requests ({requests.__version__}) - Network access ready")
+except ImportError as error:
+    check = False
     print(f"{error}\nplease: pip install "
-          "-r requirement.txt")
+          "-r requirements.txt or poetry install")
 
 try:
     import matplotlib
-    print("[OK] matplotlib (3.10.8) - Visualization ready")
-except Exception as error:
+    print(f"[OK] matplotlib ({matplotlib.__version__}) - Visualization ready")
+except ImportError as error:
+    check = False
     print(f"{error}\nplease: pip install "
-          "-r requirement.txt")
+          "-r requirements.txt or poetry install")
+
+if check is not True:
+    sys.exit(1)
