@@ -2,14 +2,20 @@
 name = "ex1"
 version = "0.1.0"
 license = "42"
-description = "Exemple de projet Python"
+description = "Exemple project Python"
 authors = [
-	{ name="cpietrza", email="pietrza@student.42lyon.fr"}
-	]
-requires-python = ">=3.10"
+    { name = "cpietrza", email = "pietrza@student.42lyon.fr" }
+]
 
-[tool.poetry.dependencies]
-matplotlib = "3.10.8"
-requests = "2.33.1"
-pandas = "3.0.2"
-numpy = "2.4.4"
+requires-python = ">=3.11"
+dependencies = [
+    "matplotlib==3.10.8",
+    "requests==2.33.1",
+    "pandas==3.0.2",
+    "numpy==2.4.4"
+]
+
+[tool.poetry]
+package-mode = false
+
+
