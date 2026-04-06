@@ -17,7 +17,7 @@ def check_import(library: str) -> bool:
         return False
 
 
-def scap_data(url) -> tuple[list, list]:
+def scrap_data(url) -> tuple[list, list]:
     import requests
     from requests.models import Response
     headers: dict[str, str] = {"User-Agent": "Mozilla/5.0"}
@@ -70,9 +70,9 @@ def generate_graph(data_frame, name_file) -> None:
     plt.figure(figsize=(10, 5))
     plt.plot(data_frame.index, data_frame["Price barrel (USD)"], color='blue')
 
-    plt.title("Évolution du prix du baril de pétrole (CL=F)")
-    plt.xlabel("Date et Heure")
-    plt.ylabel("Prix (USD)")
+    plt.title("Evolution of the price of a barrel of oil (CL=F)")
+    plt.xlabel("Date & Time")
+    plt.ylabel("Price (USD)")
 
     plt.xticks(rotation=45)
     plt.tight_layout()
@@ -99,7 +99,7 @@ if __name__ == "__main__":
     )
 
     name_png = "matrix_analysis.png"
-    prices, dates = scap_data(url)
+    prices, dates = scrap_data(url)
     price_ndarray, date_ndarray = ndarray(prices, dates)
     data_frame: Any = structuring_data(price_ndarray, date_ndarray)
     generate_graph(data_frame, name_png)
