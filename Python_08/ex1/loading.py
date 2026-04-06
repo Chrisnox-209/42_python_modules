@@ -6,9 +6,9 @@ import sys
 
 def check_import(library: str) -> bool:
     try:
-        importlib.import_module(library)
+        module = importlib.import_module(library)
         print(f"[OK] {library} "
-              "({getattr(module, '__version__', 'no version')}) "
+              f"({getattr(module, '__version__', 'no version')}) "
               "- Data manipulation ready")
         return True
     except ImportError as error:
