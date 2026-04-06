@@ -1,12 +1,15 @@
 
 import importlib
+from typing import Any
 import sys
 
 
-def check_import(library: str):
+def check_import(library: str) -> bool:
     try:
-        module = importlib.import_module(library)
-        print(f"[OK] {library} ({getattr(module, '__version__', 'no version')}) - Data manipulation ready")
+        importlib.import_module(library)
+        print(f"[OK] {library} "
+              "({getattr(module, '__version__', 'no version')}) "
+              "- Data manipulation ready")
         return True
     except ImportError as error:
         print(f"{error}\nplease: pip install "
@@ -14,16 +17,19 @@ def check_import(library: str):
         return False
 
 
-def scap_data(url):
+def scap_data(url) -> tuple[list, list]:
     import requests
-    headers = {"User-Agent": "Mozilla/5.0"}
-    response = requests.get(url, headers=headers)
-    data = response.json()
-    date_list = data['chart']['result'][0]['timestamp']
-    data_list = data['chart']['result'][0]['indicators']['quote'][0]['close']
+    from requests.models import Response
+    headers: dict[str, str] = {"User-Agent": "Mozilla/5.0"}
+    response: Response = requests.get(url, headers=headers)
+    data: Any = response.json()
+    date_list: Any = data['chart']['result'][0]['timestamp']
+    data_list: Any = (
+        data['chart']['result'][0]['indicators']['quote'][0]['close']
+    )
 
-    clean_prices = []
-    clean_dates = []
+    clean_prices: list = []
+    clean_dates: list = []
 
     for price, date in zip(data_list, date_list):
         if price is not None:
@@ -33,13 +39,13 @@ def scap_data(url):
     return clean_prices, clean_dates
 
 
-def ndarray(data_list, date_list):
+def ndarray(data_list, date_list) -> tuple:
     import numpy
-    price_ndarray = numpy.array(data_list)
-    dates_ndarray = numpy.array(date_list)
+    price_ndarray: Any = numpy.array(data_list)
+    dates_ndarray: Any = numpy.array(date_list)
 
-    prices_1000 = price_ndarray[-1000:]
-    dates_1000 = dates_ndarray[-1000:]
+    prices_1000: Any = price_ndarray[-1000:]
+    dates_1000: Any = dates_ndarray[-1000:]
 
     print("Analyzing Matrix data...")
     print(f"Processing {len(prices_1000)} data points...")
@@ -47,14 +53,16 @@ def ndarray(data_list, date_list):
     return prices_1000, dates_1000
 
 
-def structuring_data(data_ndarray, dates_ndarray):
+def structuring_data(data_ndarray, dates_ndarray) -> Any:
     import pandas
-    second_dates = pandas.to_datetime(dates_ndarray, unit='s')
-    data_frame = pandas.DataFrame(data_ndarray, index=second_dates, columns=["Price barrel (USD)"])
+    second_dates: Any = pandas.to_datetime(dates_ndarray, unit='s')
+    data_frame = pandas.DataFrame(data_ndarray,
+                                  index=second_dates,
+                                  columns=["Price barrel (USD)"])
     return data_frame
 
 
-def generate_graph(data_frame, name_file):
+def generate_graph(data_frame, name_file) -> None:
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
@@ -72,7 +80,6 @@ def generate_graph(data_frame, name_file):
     plt.close()
 
 
-
 if __name__ == "__main__":
     if not all([
         check_import("pandas"),
@@ -81,14 +88,21 @@ if __name__ == "__main__":
         check_import("matplotlib")
     ]):
         sys.exit(1)
+    prices: list = []
+    dates: list = []
+    price_ndarray: Any
+    date_ndarray: Any
 
-    url = "https://query1.finance.yahoo.com/v8/finance/chart/CL=F?range=5d&interval=1m"
+    url = (
+        "https://query1.finance.yahoo.com/v8/finance/chart/CL=F"
+        "?range=5d&interval=1m"
+    )
+
     name_png = "matrix_analysis.png"
     prices, dates = scap_data(url)
     price_ndarray, date_ndarray = ndarray(prices, dates)
-    data_frame = structuring_data(price_ndarray, date_ndarray)
+    data_frame: Any = structuring_data(price_ndarray, date_ndarray)
     generate_graph(data_frame, name_png)
-
 
     print("Analysis complete!")
     print("Results saved to: matrix_analysis.png")

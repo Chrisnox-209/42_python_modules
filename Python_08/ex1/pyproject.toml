@@ -7,15 +7,19 @@ authors = [
     { name = "cpietrza", email = "pietrza@student.42lyon.fr" }
 ]
 
-requires-python = ">=3.11"
+requires-python = ">=3.13"
+
 dependencies = [
-    "matplotlib==3.10.8",
-    "requests==2.33.1",
-    "pandas==3.0.2",
-    "numpy==2.4.4"
+    "matplotlib (==3.10.8)",
+    "requests(==2.33.1)",
+    "pandas(==3.0.2)",
+    "numpy(==2.4.4)"
 ]
 
 [tool.poetry]
 package-mode = false
 
 
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
