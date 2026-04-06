@@ -220,17 +220,17 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 
   ```
 ├── ex0/
-│   └──
+│   └── construct.py
 ├── ex1/
-│   └──
-├── ex2/
-│   └──
-├── ex3/
-│   └──
-├── ex4/
-│   └──
-└── ex5/
-      └──
+│   ├── loading.py
+|	├── pyproject.toml
+│   └── requirements.txt
+└── ex2/
+	├── .env
+	├── .env.exemple
+	├── .gitignore
+    └── oracle.py
+
   ```
   </details>
 
