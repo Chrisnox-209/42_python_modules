@@ -6,11 +6,21 @@ import sys
 
 
 def check_import(library: str) -> bool:
+    if library == "pandas":
+        text: str = "Data manipulation"
+    elif library == "numpy":
+        text = "Numerical computation"
+    elif library == "requests":
+        text = "Network access"
+    elif library == "matplotlib":
+        text = "Visualization"
+    else:
+        text = f"module {text}"
     try:
         module: ModuleType = importlib.import_module(library)
         print(f"[OK] {library} "
               f"({getattr(module, '__version__', 'no version')}) "
-              "- Data manipulation ready")
+              f"- {text} ready")
         return True
     except ImportError as error:
         print(f"{error}\nplease: pip install "
@@ -52,7 +62,7 @@ def ndarray(data_list: Any, date_list: Any) -> tuple:
     prices_1000: Any = price_ndarray[-1000:]
     dates_1000: Any = dates_ndarray[-1000:]
 
-    print("Analyzing Matrix data...")
+    print("\nAnalyzing Matrix data...")
     print(f"Processing {len(prices_1000)} data points...")
     print("Generating visualization...")
     return prices_1000, dates_1000
@@ -62,8 +72,8 @@ def structuring_data(data_ndarray: Any, dates_ndarray: Any) -> Any:
     import pandas
     second_dates: Any = pandas.to_datetime(dates_ndarray, unit='s')
     data_frame: Any = pandas.DataFrame(data_ndarray,
-                                  index=second_dates,
-                                  columns=["Price barrel (USD)"])
+                                       index=second_dates,
+                                       columns=["Price barrel (USD)"])
     return data_frame
 
 
@@ -86,6 +96,8 @@ def generate_graph(data_frame: Any, name_file: str) -> None:
 
 
 if __name__ == "__main__":
+    print("\nLOADING STATUS: Loading programs...\n")
+    print("Checking dependencies:")
     if not all([
         check_import("pandas"),
         check_import("numpy"),
@@ -109,5 +121,5 @@ if __name__ == "__main__":
     data_frame: Any = structuring_data(price_ndarray, date_ndarray)
     generate_graph(data_frame, name_png)
 
-    print("Analysis complete!")
+    print("\nAnalysis complete!")
     print("Results saved to: matrix_analysis.png")
