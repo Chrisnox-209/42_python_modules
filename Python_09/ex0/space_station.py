@@ -15,8 +15,7 @@ class SpaceStation(BaseModel):
 
 def main() -> None:
     print("Space Station Data Validation\n"
-          "========================================\n"
-          "Valid station created:")
+          "========================================")
 
     try:
         station = SpaceStation(station_id="ISS001",
@@ -27,6 +26,7 @@ def main() -> None:
                                last_maintenance=datetime.now(),
                                is_operational=True,
                                notes="Note that the oxygen level is not 100%.")
+        print("Valid station created:")
         print(f"ID: {station.station_id}")
         print(f"Name: {station.name}")
         print(f"Crew: {station.crew_size} people")
@@ -49,6 +49,7 @@ def main() -> None:
                                last_maintenance=datetime.now(),
                                is_operational=True,
                                notes="Note that the oxygen level is not 100%.")
+        print("Valid station created:")
         print(f"ID: {station.station_id}")
         print(f"Name: {station.name}")
         print(f"Crew: {station.crew_size} people")
