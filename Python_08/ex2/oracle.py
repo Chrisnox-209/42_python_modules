@@ -41,6 +41,7 @@ if __name__ == "__main__":
     print("\nORACLE STATUS: Reading the Matrix...\n")
 
     env_loaded: bool = load_dotenv()
+    print("Configuration loaded:")
     data_ok: bool = check_data()
 
     print("Environment security check:\n"
