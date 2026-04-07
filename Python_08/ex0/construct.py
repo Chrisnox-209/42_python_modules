@@ -17,7 +17,7 @@ def outside(value: bool) -> str:
                 f"{package[0] if package else ''}")
     else:
         return (f"\nMATRIX STATUS: You're still plugged in\n\n"
-                f"Current Python: {sys.prefix}\n"
+                f"Current Python: {sys.executable}\n"
                 "Virtual Environment: None detected\n\n"
                 "WARNING: You're in the global environment!\n"
                 "The machines can see everything you install.\n\n"
@@ -28,7 +28,7 @@ def outside(value: bool) -> str:
                 "Then run this program again.")
 
 
-def check_environement() -> bool:
+def check_environment() -> bool:
     path: str = os.path.dirname(os.path.abspath(__file__))
     env_path: str = os.path.dirname(sys.executable)
     if path in env_path:
@@ -38,4 +38,4 @@ def check_environement() -> bool:
 
 
 if __name__ == "__main__":
-    print(outside(check_environement()))
+    print(outside(check_environment()))
