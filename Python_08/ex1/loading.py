@@ -1,12 +1,13 @@
 
 import importlib
 from typing import Any
+from types import ModuleType
 import sys
 
 
 def check_import(library: str) -> bool:
     try:
-        module = importlib.import_module(library)
+        module: ModuleType = importlib.import_module(library)
         print(f"[OK] {library} "
               f"({getattr(module, '__version__', 'no version')}) "
               "- Data manipulation ready")
@@ -17,12 +18,16 @@ def check_import(library: str) -> bool:
         return False
 
 
-def scrap_data(url) -> tuple[list, list]:
+def scrap_data(url: str) -> tuple[list, list]:
     import requests
     from requests.models import Response
     headers: dict[str, str] = {"User-Agent": "Mozilla/5.0"}
-    response: Response = requests.get(url, headers=headers)
-    data: Any = response.json()
+    try:
+        response: Response = requests.get(url, headers=headers)
+        data: Any = response.json()
+    except Exception as error:
+        print(error)
+        sys.exit(1)
     date_list: Any = data['chart']['result'][0]['timestamp']
     data_list: Any = (
         data['chart']['result'][0]['indicators']['quote'][0]['close']
@@ -39,7 +44,7 @@ def scrap_data(url) -> tuple[list, list]:
     return clean_prices, clean_dates
 
 
-def ndarray(data_list, date_list) -> tuple:
+def ndarray(data_list: Any, date_list: Any) -> tuple:
     import numpy
     price_ndarray: Any = numpy.array(data_list)
     dates_ndarray: Any = numpy.array(date_list)
@@ -53,16 +58,16 @@ def ndarray(data_list, date_list) -> tuple:
     return prices_1000, dates_1000
 
 
-def structuring_data(data_ndarray, dates_ndarray) -> Any:
+def structuring_data(data_ndarray: Any, dates_ndarray: Any) -> Any:
     import pandas
     second_dates: Any = pandas.to_datetime(dates_ndarray, unit='s')
-    data_frame = pandas.DataFrame(data_ndarray,
+    data_frame: Any = pandas.DataFrame(data_ndarray,
                                   index=second_dates,
                                   columns=["Price barrel (USD)"])
     return data_frame
 
 
-def generate_graph(data_frame, name_file) -> None:
+def generate_graph(data_frame: Any, name_file: str) -> None:
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
@@ -93,7 +98,7 @@ if __name__ == "__main__":
     price_ndarray: Any
     date_ndarray: Any
 
-    url = (
+    url: str = (
         "https://query1.finance.yahoo.com/v8/finance/chart/CL=F"
         "?range=5d&interval=1m"
     )
