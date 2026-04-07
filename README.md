@@ -227,7 +227,7 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 │   └── requirements.txt
 └── ex2/
 	├── .env
-	├── .env.exemple
+	├── .env.example
 	├── .gitignore
     └── oracle.py
 
