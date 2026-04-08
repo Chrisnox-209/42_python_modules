@@ -26,7 +26,7 @@ class AlienContact(BaseModel):
     def check_contact(self) -> Self:
         id: str = self.contact_id
         if id[:2] != "AC":
-            raise ValueError("[ERROR]: contact_id does not "
+            raise ValueError("contact_id does not "
                              "start with 'AC'")
         return self
 
@@ -34,10 +34,10 @@ class AlienContact(BaseModel):
     def check_physical(self) -> Self:
         if (self.contact_type == ContactType.PHYSICAL
            and not self.is_verified):
-            raise ValueError("[ERROR]: is_verified is not 'True'")
+            raise ValueError("is_verified is not 'True'")
         if (self.contact_type == ContactType.TELEPATHIC
            and self.witness_count < 3):
-            raise ValueError("[ERROR]: witness_count is 3 or more")
+            raise ValueError("witness_count is 3 or more")
         return self
 
     @model_validator(mode='after')
