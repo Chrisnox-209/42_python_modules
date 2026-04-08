@@ -253,17 +253,16 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 
   ```
 ├── ex0/
-│   └──
+│   └── lambda_spells.py
 ├── ex1/
-│   └──
+│   └── higher_magic.py
 ├── ex2/
-│   └──
+│   └── scope_mysteries.py
 ├── ex3/
-│   └──
-├── ex4/
-│   └──
-└── ex5/
-      └──
+│   └── functools_artifacts.py
+└── ex4/
+    └── decorator_mastery.py
+
   ```
   </details>
 
