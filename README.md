@@ -239,17 +239,12 @@ Le cursus est structuré autour de la montée en puissance des compétences :
 
   ```
 ├── ex0/
-│   └──
+│   └── space_station.py
 ├── ex1/
-│   └──
-├── ex2/
-│   └──
-├── ex3/
-│   └──
-├── ex4/
-│   └──
-└── ex5/
-      └──
+│   └── alien_contact.py
+└── ex2/
+    └── space_crew.py
+
   ```
   </details>
 
