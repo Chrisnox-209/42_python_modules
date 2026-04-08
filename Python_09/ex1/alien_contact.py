@@ -37,15 +37,16 @@ class AlienContact(BaseModel):
             raise ValueError("is_verified is not 'True'")
         if (self.contact_type == ContactType.TELEPATHIC
            and self.witness_count < 3):
-            raise ValueError("witness_count is 3 or more")
+            raise ValueError("Telepathic contact requires at least 3 "
+                             "witnesses")
         return self
 
     @model_validator(mode='after')
     def check_signal(self) -> Self:
         if (self.signal_strength > 7.0 and
            (self.message_received == "" or self.message_received is None)):
-            raise ValueError("Telepathic contact requires at least 3 "
-                             "witnesses")
+            raise ValueError("Strong signals (>7.0) must include a "
+                             "received message")
         return self
 
 
