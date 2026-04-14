@@ -30,19 +30,27 @@ def mage_stats(mages: list[dict]) -> dict:
 if __name__ == "__main__":
 
     # ### data
-    pourit: dict[str, Any] = {'name': "Lantern of Souls", 'power': 12, 'type': "B"}
+    pourit: dict[str, Any] = {'name': "Lantern of Souls",
+                              'power': 12, 'type': "B"}
     fluberg: dict[str, Any] = {'name': "Frost Shard", 'power': 40, 'type': "C"}
     emaj: dict[str, Any] = {'name': "Fire Staff", 'power': 92, 'type': "A"}
-    heingstar: dict[str, Any] = {'name': "Ring of Secrets", 'power': 33, 'type': "D"}
+    heingstar: dict[str, Any] = {'name': "Ring of Secrets",
+                                 'power': 33, 'type': "D"}
     qubrik: dict[str, Any] = {'name': "Crystal Orb", 'power': 85, 'type': "E"}
 
-    magnus: dict[str, Any] = {'name': "Magnus Firethorn", 'power': 12, 'element': "water"}
-    seraphin: dict[str, Any] = {'name': "Seraphin Lowell", 'power': 40, 'element': "fire"}
-    thalor: dict[str, Any] = {'name': "Thalor Brightspell", 'power': 22, 'element': "earth"}
-    kaelion: dict[str, Any] = {'name': "Kaelion Duskwind", 'power': 33, 'element': "air"}
-    arkanor: dict[str, Any] = {'name': "Arkanor Virel", 'power': 85, 'element': "water"}
+    magnus: dict[str, Any] = {'name': "Magnus Firethorn",
+                              'power': 12, 'element': "water"}
+    seraphin: dict[str, Any] = {'name': "Seraphin Lowell",
+                                'power': 40, 'element': "fire"}
+    thalor: dict[str, Any] = {'name': "Thalor Brightspell",
+                              'power': 22, 'element': "earth"}
+    kaelion: dict[str, Any] = {'name': "Kaelion Duskwind",
+                               'power': 33, 'element': "air"}
+    arkanor: dict[str, Any] = {'name': "Arkanor Virel",
+                               'power': 85, 'element': "water"}
 
-    artifacts: list[dict[str, Any]] = [pourit, fluberg, emaj, heingstar, qubrik]
+    artifacts: list[dict[str, Any]] = [pourit, fluberg, emaj,
+                                       heingstar, qubrik]
     mages: list[dict[str, Any]] = [magnus, seraphin, thalor, kaelion, arkanor]
     spells: list[str] = ["fireball", "heal", "shield"]
     # ### data
