@@ -1,4 +1,4 @@
-from typing import Callable
+from typing import Callable, Any
 
 
 def mage_counter() -> Callable:
@@ -13,7 +13,7 @@ def mage_counter() -> Callable:
 
 def spell_accumulator(initial_power: int) -> Callable:
 
-    def add_power(amount):
+    def add_power(amount) -> Any | int:
         nonlocal initial_power
         initial_power += amount
         return initial_power
@@ -22,43 +22,43 @@ def spell_accumulator(initial_power: int) -> Callable:
 
 def enchantment_factory(enchantment_type: str) -> Callable:
 
-    def build_enchantement(item_name: str):
+    def build_enchantement(item_name: str) -> str:
         return (f"{enchantment_type} {item_name}")
     return build_enchantement
 
 
 def memory_vault() -> dict[str, Callable]:
-    vault = {}
+    vault: dict = {}
 
-    def store(key, value):
+    def store(key, value) -> None:
         vault[key] = value
 
-    def recall(key):
+    def recall(key) -> Any:
         return vault.get(key, "Memory not found")
     return {'store': store, 'recall': recall}
 
 
-def main():
+def main() -> None:
     print("Testing mage counter...")
-    counter_a = mage_counter()
-    counter_b = mage_counter()
+    counter_a: Callable[..., Any] = mage_counter()
+    counter_b: Callable[..., Any] = mage_counter()
     print(f"counter_a call 1: {counter_a()}")
     print(f"counter_a call 2: {counter_a()}")
     print(f"counter_b call 1: {counter_b()}")
 
     print("\nTesting spell accumulator...")
-    base = spell_accumulator(100)
+    base: Callable[..., Any] = spell_accumulator(100)
     print(f"Base 100, add 20: {base(20)}")
     print(f"Base 100, add 30: {base(30)}")
 
     print("\nTesting memory vault...")
-    use_spell_flaming = enchantment_factory("Flaming")
-    use_spell_frozen = enchantment_factory("Frozen")
+    use_spell_flaming: Callable[..., Any] = enchantment_factory("Flaming")
+    use_spell_frozen: Callable[..., Any] = enchantment_factory("Frozen")
     print(use_spell_flaming("Sword"))
     print(use_spell_frozen("Shield"))
 
     print("\nTesting memory vault...")
-    mem = memory_vault()
+    mem: dict[str, Callable[..., Any]] = memory_vault()
     mem['store']("secret", 42)
     print("Store 'secret' = 42")
     print(f"Recall 'secret': {mem['recall']('secret')}")

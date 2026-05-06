@@ -30,7 +30,7 @@ def main() -> None:
     def heal(target: str, power: int) -> str:
         return f"Heal restores {target} for {power} HP"
     combined: Callable = spell_combiner(spell, heal)
-    result_tuple = combined('Dragon', 42)
+    result_tuple: Any = combined('Dragon', 42)
     print(f"Combined spell result: {result_tuple[0]}, {result_tuple[1]}")
 
     print("\nTesting power amplifier...")

@@ -15,11 +15,12 @@ def spell_timer(func: Callable) -> Callable:
 
 
 def power_validator(min_power: int) -> Callable:
-    def decorator(func: Callable):
+    def decorator(func: Callable) -> Callable:
         @wraps(func)
-        def wrapper(*args, **kwargs):
+        def wrapper(*args, **kwargs) -> Any:
 
-            p = kwargs.get('power') or (args[2] if len(args) > 2 else args[0])
+            p: Any = kwargs.get('power') or (
+                args[2] if len(args) > 2 else args[0])
             if p >= min_power:
                 return func(*args, **kwargs)
             return "Insufficient power for this spell"
@@ -66,11 +67,11 @@ def spellcaster() -> str:
 
 
 @retry_spell(3)
-def unstable_spell():
+def unstable_spell() -> None:
     raise Exception
 
 
-def main():
+def main() -> None:
 
     print("Testing spell timer...")
     print(spellcaster())

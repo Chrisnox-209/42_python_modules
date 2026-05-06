@@ -1,5 +1,5 @@
 import functools
-from functools import reduce
+from functools import reduce, partial
 import operator
 from typing import Callable, Any
 
@@ -20,10 +20,12 @@ def spell_reducer(spells: list[int], operation: str) -> int:
 
 
 def partial_enchanter(base_enchantment: Callable) -> dict[str, Callable]:
-    fire_spell = functools.partial(base_enchantment, power=50, element="Fire")
-    ice_spell = functools.partial(base_enchantment, power=50, element="Ice")
-    lightning_spell = functools.partial(base_enchantment, power=50,
-                                        element="Lightning")
+    fire_spell: partial = functools.partial(base_enchantment,
+                                            power=50, element="Fire")
+    ice_spell: partial = functools.partial(base_enchantment,
+                                           power=50, element="Ice")
+    lightning_spell: partial = functools.partial(base_enchantment,
+                                                 power=50, element="Lightning")
     return {"Fire": fire_spell, "Ice": ice_spell, "Lightning": lightning_spell}
 
 
@@ -54,9 +56,9 @@ def spell_dispatcher() -> Callable[[Any], str]:
     return cast
 
 
-def main():
+def main() -> None:
     print("Testing spell reducer...")
-    power_spell = [40, 20, 10, 30]
+    power_spell: list[int] = [40, 20, 10, 30]
     print(f"Sum: {spell_reducer(power_spell, 'add')}")
     print(f"Product: {spell_reducer(power_spell, 'multiply')}")
     print(f"Max: {spell_reducer(power_spell, 'max')}")
@@ -65,7 +67,7 @@ def main():
 
     def base_enchantment(power: int, element: str, target: str) -> str:
         return (f"power: {power}, element: {element}, target: {target}")
-    spells = partial_enchanter(base_enchantment)
+    spells: dict[str, Callable[..., Any]] = partial_enchanter(base_enchantment)
     print(spells["Fire"](target="Dragon"))
     print(spells["Ice"](target="Snake"))
     print(spells["Lightning"](target="Goblin"))
@@ -77,7 +79,7 @@ def main():
     print(f"Fib(15): {memoized_fibonacci(15)}")
 
     print("\nTesting spell dispatcher...")
-    spellcaster = spell_dispatcher()
+    spellcaster: Callable[[Any], str] = spell_dispatcher()
     print(spellcaster(42))
     print(spellcaster("fireball"))
     print(spellcaster(["Feu", "Glace", "Foudre"]))
